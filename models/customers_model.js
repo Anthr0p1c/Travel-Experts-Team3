@@ -4,6 +4,10 @@ David Grant
 PROJ-009
 */
 
+// Includes Customers, Booking details, and Bookings schemas pulled from mongodb cloud
+
+
+
 // Connect to mongo cloud database
 const MongoClient = require('mongodb');
 const uri = "mongodb+srv://Anthropic:Rpu81opvi@cluster0.4annu.mongodb.net/travelexperts?retryWrites=true&w=majority";
@@ -62,10 +66,29 @@ const booking_details_schema = new mongoose.Schema({
     { collection: "bookingdetails" })
 
 
+// Bookings schema
+const bookings_schema = new mongoose.Schema({
+    
+    _id: { type: Number },
+    BookingId: { type: Number },
+    BookingDate: { type: Date },
+    BookingNo: { type: Number },
+    TravelerCount: { type: Number },
+    CustomerId: { type: Number },
+    TripTypeId: { type: String },
+    PackageId: { type: String },
+
+
+},
+    { collection: "bookings" })    
+
+
 
 
 customers_schema.plugin(uniqueValidator)
 booking_details_schema.plugin(uniqueValidator)
+bookings_schema.plugin(uniqueValidator)
 
 module.exports.CustomersModel = mongoose.model("CustomersModel", customers_schema)
 module.exports.BookingDetailsModel = mongoose.model("BookingDetailsModel", booking_details_schema)
+module.exports.BookingsModel = mongoose.model("BookingsModel", bookings_schema)
