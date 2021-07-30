@@ -1,0 +1,161 @@
+   /* Course: Web Application development
+Date:2021/07/10
+Author: Sujani Wijesundera 
+Purpose: TravelExperts contact css.  */ 
+
+    .navbar-light .navbar-nav .nav-link.active,
+    .navbar-light .navbar-nav .show>.nav-link {
+        color: #f8f9fa;
+        font-size: medium
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* Style inputs */
+    input[type=text],
+    input[type=email] {
+        width: 150%;
+        padding: 6px;
+        border: 1px solid rgb(241, 217, 230);
+        margin-top: 6px;
+        margin-bottom: 16px;
+
+    }
+
+    textarea {
+        width: 300%;
+        padding: 6px;
+        border: 1px solid rgb(241, 217, 230);
+        margin-top: 6px;
+        margin-bottom: 16px;
+
+    }
+
+
+    input[type=submit] {
+        background-color: #387fe9;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    input[type=submit]:hover {
+        background-color: #bb85ee;
+    }
+
+    /* Style the container/contact section */
+    .container {
+        border-radius: 5px;
+        /* background-color: #e4eaf0d8; */
+        padding: 10px;
+        align-self: center;
+    }
+
+    /* Create two columns that float next to eachother */
+    .column {
+        float: left;
+        width: 50%;
+        margin-top: 6px;
+        padding: 20px;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .fontclass {
+        color: #167ad6;
+        font-family: Georgia, Serif;
+    }
+
+    .fontclasswhite {
+        color:white;
+        font-family: Georgia, Serif;
+    }
+
+    .navbar {
+        padding-top: 0px;
+        padding-bottom: 0px;
+        background-color: #89aee4 !important;
+    }
+
+    .card {
+        background-color: #1c64a414;
+        border: 1px solid #0dcaf0;
+
+    }
+
+    .card-body {
+        flex: 1 0 auto;
+        margin-inline: 10px;
+        margin: 1000px, 20px, 20px, 20px;
+
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+
+        .column,
+        input[type=submit] {
+            width: 100%;
+            margin-top: 0;
+
+        }
+    }
+
+    /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+    @media screen and (max-width: 600px) {
+
+        .column,
+        input[type=textarea] {
+            width: 50%;
+            margin-top: 0;
+        }
+    }
+
+    @media (min-width:768px) {
+
+        /* how about (min-width:768px) and (max-width:991px)???? */
+        /* min 768px and up */
+        .column,
+        input[type=textarea] {
+            width: 50%;
+            margin-top: 0;
+        }
+    }
+
+    @media (min-width:992px) {
+
+        /* how about (min-width:992px) and (max-width:1199px)???? */
+        .column,
+        input[type=textarea] {
+            width: 50%;
+            margin-top: 0;
+        }
+    }
+
+    @media (min-width:1200px) {
+
+        .column,
+        input[type=textarea] {
+            width: 50%;
+            margin-top: 0;
+        }
+    }
+
+    @media (min-width:768px) {
+
+        /* how about (min-width:768px) and (max-width:991px)???? */
+        /* min 768px and up */
+        .column,
+        input[type=textarea] {
+            width: 50%;
+            margin-top: 0;
+        }
+    }

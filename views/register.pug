@@ -1,0 +1,305 @@
+extends layout
+
+
+block content
+  style.
+      .container-fluid {
+      background-color: #b2bdbd;
+      }
+      fieldset {
+      background-color: #D2D3D2;
+      width: 520px;
+      height: 490px;
+      align-items: center;
+      border: 2px;
+      border-color: turquoise;
+      }
+      legend {
+      background-color: rgb(195 203 210);
+      color: rgb(90, 88, 88);
+      padding: 5px 10px;
+      }
+      input {
+      margin: 5px;
+      width: 240px;
+      }
+      label {
+      margin: 5px;
+      width: 100x;
+      }
+      .fontclass {
+      color: #167ad6;
+      font-family: Georgia, Serif;
+      }
+      input[type=submit] {
+      background-color: #387fe9;
+      color: white;
+      padding: 5px 12px;
+      border: none;
+      cursor: pointer;
+      }
+      input[type=submit] :hover {
+      background-color: #bb85ee;
+      }
+      input[type=reset] {
+      background-color: #387fe9;
+      color: white;
+      padding: 5px 12px;
+      border: none;
+      cursor: pointer;
+      }
+      input[type=reset] :hover {
+      background-color: #bb85ee;
+      }
+      .navbar {
+      padding-top: 0px;
+      padding-bottom: 0px;
+      background-color: #b2bdbd !important;
+      }
+
+
+  
+  header
+    a(href=imgPath)
+      img(src=imgPath alt='TravellExpert Logo' width='200' style='float:right;padding-right: 20px;padding-right: inherit;width:200px;height:200px;')
+  br
+  br
+  //form#f1(name='register' method='post' action='reguser' onsubmit='return validateForm()')
+  form#f1(name='register' method='post' action='/post/create' onsubmit='return validateForm()')  
+
+    center
+      br
+      br
+      br
+      br
+      br
+      br
+      br
+      br
+      if errors
+            ul
+              each error in errors
+                if error == "Your Email address already exists. Please Login"
+                  li.alert.alert-danger.m3 #{error} 
+                  a(href="/indexsujani")  Login                  
+          
+                else 
+                  li.alert.alert-danger.m3= error
+
+      section(style='align-items: center;')
+        br
+        br
+        br
+        br
+        fieldset#myFieldSet
+          legend.fontclass(style='color:white') Register your account
+
+          
+  
+
+          table.fontclass(border='0')
+            tr
+              td(style='width: 30px;')
+                label First Name*:
+              td
+                input#txtFirstName(type='text' name='firstname')
+                span#nameDescription
+                span#blankMsgName(style='color:red')  
+            tr
+              td(style='width: 30px;')
+                label Last Name*:
+              td
+                input#txtLastName(type='text' name='lastname')
+                span#lNameDescription
+                span#blankMsgLName(style='color:red')  
+            tr
+              td(style='width: 30px;')
+                label Password*:
+              td
+                input#txtPassword(type='password' name='password')
+                span#pNameDescription
+                span#blankMsgPName(style='color:red')  
+            tr
+              td(style='width: 30px;')
+                label Confirm Password*:
+              td
+                input#txtConfirmPassword(type='password' name='confirmpassword')
+                span#blankMsgPConfirmName(style='color:red')  
+                span#pConfirmNameDescription(style='color:red')  
+            tr
+              td(style='width: 30px;')
+                label Email Address*:
+              td
+                input#txtEmail(type='text' required='true' name='email')
+                span#blankMsgEmail(style='color:red')  
+                span#EmailDescription(style='color:red')  
+            tr
+              td(style='width: 30px;')
+                label Address:
+              td
+                input#txtAddress(type='text' name='address')
+            tr
+              td(style='width: 30px;')
+                label City:
+              td
+                input#txtCity(type='text' name='city')
+            tr
+              td(style='width: 30px;')
+                label Province:
+              td
+                input#txtProvince(type='text' name='province')
+            tr
+              td(style='width: 30px;')
+                label PostalCode:
+              td
+                input#txtPostalCode(type='text' name='postalcode')
+                span#blankMsgPostal(style='color:red')  
+                span#postalDescription(style='color:red')  
+            tr
+              td(style='width: 30px;')
+                label Country:
+              td
+                input#txtCountry(type='text' name='country')  
+            tr
+              td(style='width: 30px;')
+                label HomePhone:
+              td
+                input#txtHomePhone(type='text' name='homephone')  
+            tr
+              td(style='width: 30px;')
+                label Business Phone:
+              td
+                input#txtBusPhone(type='text' name='businessphone')    
+            //- tr
+            //-   td(style='width: 30px;')
+            //-     label Agent ID:
+            //-   td
+            //-     input#txtAgentId(type='text' name='agentid')        
+        
+            tr
+              td
+                input(type='submit' name='butSubmit' value='SUMBIT' onclick="return confirm('Do you want to submit the form?')")
+              td
+                input(type='reset' name='butReset' value='RESET' onclick="return confirm('Do you want to reset the form?')")
+  div(style='clear: both;')
+  br
+  br
+
+  
+  script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')
+  script.
+    //This section is for display the guide messages when user is going to enter data in the input fields. And user is going to type message will disapear.
+    //display message for firstname.
+    document.getElementById("txtFirstName").onfocus = function () { displayDescription() };
+    function displayDescription() {
+    document.getElementById("blankMsgName").innerText = null;
+    var nameDes = document.getElementById("nameDescription");
+    nameDes.innerText = null;
+    var firstName = document.getElementById("txtFirstName");
+    // firstName.focus();
+    var nameDes = document.getElementById("nameDescription");
+    nameDes.style = "background-color:red; color: white";
+    nameDes.innerText = "Enter Alphabetical Characters here.";
+    document.getElementById("txtFirstName").onkeypress = function () { disapearIncorrectNameMessage(); }
+    }
+    function disapearIncorrectNameMessage() {
+    document.getElementById("blankMsgName").innerText = null;
+    var nameDes = document.getElementById("nameDescription");
+    nameDes.innerText = null;
+    }
+    //end dispaly message for first name
+    //last name
+    document.getElementById("txtLastName").onfocus = function () { displayDescriptionLastName() };
+    function displayDescriptionLastName() {
+    document.getElementById("blankMsgLName").innerText = null;
+    var nameDesl = document.getElementById("lNameDescription");
+    nameDesl.innerText = null;
+    var LastName = document.getElementById("txtLastName");
+    // firstName.focus();
+    var nameDesl = document.getElementById("lNameDescription");
+    nameDesl.style = "background-color:red; color: white";
+    nameDesl.innerText = "Enter Alphabetical Characters here.";
+    document.getElementById("txtLastName").onkeypress = function () { disapearIncorrectLastNameMessage(); }
+    }
+    function disapearIncorrectLastNameMessage() {
+    document.getElementById("blankMsgLName").innerText = null;
+    var nameDes = document.getElementById("lNameDescription");
+    nameDes.innerText = null;
+    }
+    //password description
+    document.getElementById("txtPassword").onfocus = function () { displayDescriptionPassword() };//dispalay description
+    // Display the description of how to enter password.
+    function displayDescriptionPassword() {
+    document.getElementById("blankMsgPName").innerText = null;//set error message span to null. Otherwise displays
+    //both same time.
+    var nameDesl = document.getElementById("pNameDescription");//get the span to display password description.
+    nameDesl.innerText = null;
+    nameDesl.style = "background-color:red; color: white"; // set the span description colors
+    myField = document.getElementById("myFieldSet"); // get the fieldset
+    var height = document.getElementById('myFieldSet').offsetHeight; // get the fieldset height.
+    myField.style.height = (height + 70) + "px"; // increase the field set height to display the message propely.
+    nameDesl.innerText = "Minimum length 8 Maximum 15 characters long. Combination of characters and numbers including _,#";
+    document.getElementById("txtPassword").onkeypress = function () { disapearIncorrectPasswordMessage(); }//when
+    // user is going to enter values it disapear the guide description.
+    }
+    function disapearIncorrectPasswordMessage() { // disapear the message.
+    document.getElementById("blankMsgPName").innerText = null;
+    var nameDes = document.getElementById("pNameDescription");
+    nameDes.innerText = null;
+    }
+    //confirm password
+    document.getElementById("txtConfirmPassword").onfocus = function () { displayDescriptionConfirmPassword() };
+    function displayDescriptionConfirmPassword() {
+    document.getElementById("blankMsgPConfirmName").innerText = null;
+    var nameDesl = document.getElementById("pConfirmNameDescription");
+    nameDesl.innerText = null;
+    var LastName = document.getElementById("txtConfirmPassword");
+    // firstName.focus();
+    var nameDesl = document.getElementById("pConfirmNameDescription");
+    nameDesl.style = "background-color:red; color: white";
+    myField = document.getElementById("myFieldSet");
+    var height = document.getElementById('myFieldSet').offsetHeight;
+    myField.style.height = (height + 70) + "px";
+    nameDesl.innerText = "Must be Same as Password.Minimum length 8 and Maximum 15 characters long.";
+    document.getElementById("txtConfirmPassword").onkeypress = function () { disapearIncorrectConfirmPasswordMessage(); }
+    }
+    function disapearIncorrectConfirmPasswordMessage() {
+    document.getElementById("blankMsgPConfirmName").innerText = null;
+    var nameDes = document.getElementById("pConfirmNameDescription");
+    nameDes.innerText = null;
+    }
+    //confirm Email
+    document.getElementById("txtEmail").onfocus = function () { displayDescriptionEmail() };
+    function displayDescriptionEmail() {
+    document.getElementById("blankMsgEmail").innerText = null;
+    var nameDesl = document.getElementById("EmailDescription");
+    nameDesl.innerText = null;
+    var LastName = document.getElementById("txtEmail");
+    var nameDesl = document.getElementById("EmailDescription");
+    nameDesl.style = "background-color:red; color: white";
+    nameDesl.innerText = "Enter Valid Email WIth @ and . ";
+    document.getElementById("txtEmail").onkeypress = function () { disapearIncorrectEmailMessage(); }
+    }
+    function disapearIncorrectEmailMessage() {
+    document.getElementById("blankMsgEmail").innerText = null;
+    var nameDes = document.getElementById("EmailDescription");
+    nameDes.innerText = null;
+    }
+    //Postal Code
+    document.getElementById("txtPostalCode").onfocus = function () { displayDescriptionPostalCode(); }
+    function displayDescriptionPostalCode() {
+    document.getElementById("blankMsgPostal").innerText = null;
+    var nameDesl = document.getElementById("postalDescription");
+    nameDesl.innerText = null;
+    var postalCode = document.getElementById("txtPostalCode");
+    var nameDesl = document.getElementById("postalDescription");
+    nameDesl.style = "background-color:red; color: white";
+    nameDesl.innerText = "Enter Valid Postal code. eg:- A2X3R5,A2X 3R5,a2x2r5 ";
+    document.getElementById("txtPostalCode").onkeypress = function () { disapearIncorrectPostalMessage(); }
+    }
+    function disapearIncorrectPostalMessage() {
+    document.getElementById("blankMsgPostal").innerText = null;
+    var nameDes = document.getElementById("postalDescription");
+    nameDes.innerText = null;
+    }
+  
