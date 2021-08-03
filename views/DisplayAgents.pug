@@ -1,0 +1,86 @@
+doctype html
+head
+  title Travel Experts
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
+  // CSS from bootstrap
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+
+.container
+  center
+    br
+    br
+    br
+    br
+    br
+    br
+    - var i=0
+  
+.row.row-cols-1.row-cols-md-3.g-4
+  .col
+    .card.h-100
+      .card-body.card-text.info.mb-3
+        h5.card-text.info.mb-3
+          b Agent Contacts
+                 
+          
+        if agentcalgary
+          p
+           font(color='red')
+            b Calgary Agents
+          each agent in agentcalgary
+            
+            ul(type='round')
+             b
+              li Agent Name: #{agent.AgtFirstName} #{agent.AgtLastName}
+             li MiddleInitials: #{agent.AgtMiddleInitial}
+              ul(type='square')
+               li Phone: #{agent.AgtBusPhone}
+               li
+                | Email: 
+                a(href='mailto:webmaster@travelexpert.com') #{agent.AgtEmail}
+               
+               li AgtPosition: #{agent.AgtPosition} 
+               form(name='editcontact' action='/update/editcontact' method='post')
+                input(type='hidden' name='AgentId' value=agent.AgentId)
+                button.btn.btn-primary(type="submit", name="edit") EDIT CONTACT
+                
+
+                // a.btn.btn-primary.col-12(href='/update/editcontact/?AgentId='+agent.AgentId) EDIT CONTACT   
+            hr   
+          br
+          hr
+        agentcalgary=null
+
+
+        if agentokotos
+          p
+           font(color='red')
+            b Okotas Agents
+           
+          each agent in agentokotos
+            ul(type='round')
+             b              
+              li Agent Name: #{agent.AgtFirstName} #{agent.AgtLastName}
+             li MiddleInitials: #{agent.AgtMiddleInitial}
+              ul(type='square')
+               li Phone: #{agent.AgtBusPhone}
+               li
+                | Email: 
+                a(href='mailto:webmaster@travelexpert.com') #{agent.AgtEmail}
+               li AgtPosition: #{agent.AgtPosition} 
+            hr   
+          br
+        agentokotos=null  
+     
+    
+
+footer.footc
+    | &copy; Copyright
+    | 2021,
+    | TravelExpert.com
+// Option 1: Bootstrap Bundle with Popper
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')

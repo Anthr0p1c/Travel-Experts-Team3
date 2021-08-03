@@ -60,6 +60,7 @@ head
     float: left;
     }
 // bootstrp code for menu
+//if currentUser && currentUser.role == "manager"
 nav.navbar.navbar-expand-lg.navbar-light.bg-light(style='background-color: rgb(184,191,201); padding: 0px;')
   .container-fluid
     button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#navbarScroll' aria-controls='navbarScroll' aria-expanded='false' aria-label='Toggle navigation')
@@ -67,8 +68,9 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light(style='background-color: rgb(1
     #navbarScroll.collapse.navbar-collapse(style='background-color: rgb(184, 191, 201);')
       ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll(style='--bs-scroll-height: 100px;')
         li.nav-item
-          a.nav-link.active(aria-current='page' href='#')
+          a.nav-link.active(aria-current='page' href='/')
             b Home
+            
         li.nav-item
           a.nav-link.active(href='/post/create')
             b Register
@@ -77,11 +79,17 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light(style='background-color: rgb(1
             b Contact
           ul.dropdown-menu(aria-labelledby='navbarScrollingDropdown')
             li
-              a.dropdown-item(href='/contactus')
+              a.dropdown-item(href='/contact/createcontact')
                 font(style='font-family: Arial, Helvetica, sans-serif; font-size: medium;')
                   | Contact Us
+            //if currentUser && currentUser.role == "Senior Agent" 
+            if currentUser && currentUser.role != "customer"             
+              li
+                a.dropdown-item(href='/contact/contactmessages')
+                  font(style='font-family: Arial, Helvetica, sans-serif; font-size: medium;')
+                    | View All Customer Inquiries      
             li
-              a.dropdown-item(href='#')
+              a.dropdown-item(href='Page404.html')
                 font(style='font-family: Arial, Helvetica, sans-serif; font-size: medium;')
                   | Online Help
         li.nav-item.dropdown
@@ -94,18 +102,39 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light(style='background-color: rgb(1
                   | Who We
                   | Are
             li
-              a.dropdown-item(href='#')
+              a.dropdown-item(href='Page404.html')
                 font(style='font-family: Arial, Helvetica, sans-serif; font-size: medium;')
                   | Coporate
                   | Network
             li
               hr.dropdown-divider
             li
-              a.dropdown-item(href='#') Social Responsibility
+              a.dropdown-item(href='Page404.html') Social Responsibility
+        
+        center
+        br  
+        li.nav-item
+        
+         a.nav-link.active(aria-current='page' href='/')
+           
+         .content 
+            if currentUser
+              span Welcome Back #{currentUser.username}  
+                a(href="/log-out") Log Out
+            else
+              include login.pug
+
+
+                
+          
+        
+
+
+
       center
         ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll(style='--bs-scroll-height: 100px;')
           li.nav-item
-            a.nav-link.active(aria-current='page' href='index.html' style='float:left')
+            a.nav-link.active(aria-current='page' href='/' style='float:left')
               b
               font(style='background-color: rgba(145, 198, 241, 0.699); color:rgb(38, 82, 204)')
                 b
@@ -137,7 +166,7 @@ br
           img(src='img/TheBeach.jpg' alt='Beach' style='float: left;  margin-right: 1%; margin-bottom: 0.5em;')
           .caption
             p
-              a(href='BeachPackage.html' target='_blank' style='font-style:italic; font-family:fantasy;')
+              a(href='https://traveltriangle.com/blog/best-beaches-in-sri-lanka/' target='_blank' style='font-style:italic; font-family:fantasy;')
                 | Relax
                 | and Get
                 | Tan - Best Beaches
@@ -150,7 +179,7 @@ br
           img(src='img/Adventure.jpg' alt='Adventure' style='float: left;  margin-right: 1%; margin-bottom: 0.5em;')
           .caption
             p
-              a(href='BeachPackage.html' target='_blank') Memorable Adventure packages.
+              a(href='https://bestoflanka.com/adventure-sri-lanka.php?lId=01' target='_blank') Memorable Adventure packages.
               script.
                 var beachPackage = "<b>Calgary - Mountains Adventure</b><br><br> All Suites<br>7 Days | Jul 20 - 27<br><b>All Inclusive. Junior Suite!</b>";
               button#beach.quickview(value='QuickView' onclick='openImageInWindow("<b>Calgary - Mountains Adventure</b><br><br> All Suites<br>7 Days | Jul 20 - 27<br><b>All Inclusive. Junior Suite!</b>");') QuickView
@@ -160,8 +189,8 @@ br
           img(src='img/NothernLight.jpg' alt='Light' style='float: left;  margin-right: 1%; margin-bottom: 0.5em;')
           .caption
             p
-              a(href='BeachPackage.html' target='_blank') Nothern Lights-The Best show on earth.
-              button#beach.quickview(value='QuickView') QuickView
+              a(href='https://www.travelyukon.com/en/things-to-do/article/northern-lights' target='_blank') Nothern Lights-The Best show on earth.
+              button#beach.quickview(value='QuickView' onclick='openImageInWindow("<b>Nothern Lights!</b><br><br> All Suites<br>5 Days | Sep 15 - 20<br><b>All Inclusive. Junior Suite!</b>");') QuickView
     .col-md-4
       .thumbnail
         a(href='img/TheLake.jpg' target='_blank')

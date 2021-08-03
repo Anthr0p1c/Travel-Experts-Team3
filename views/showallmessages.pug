@@ -1,0 +1,62 @@
+extends layout
+
+  
+block content
+ 
+  h3 
+    center All Customer Messages
+
+  
+  if messageList
+    each message in messageList
+        
+            hr(style='color:red; size=50px; border-radius:50px; border-style:double')
+            p(style='font-size:18px')    
+                font(style='color:red; ') Name &nbsp; 
+                
+                    a(href="/contact/mycustdetails/" + message.CustFirstName) #{message.CustFirstName} #{message.CustLastName}
+            
+            p(style='font-size:18px')    
+                font(style='color:red;') Email &nbsp;
+                
+                font(style='color:blue;') #{message.CustEmail}
+            p(style='font-size:18px')
+                
+                font(style='color:red;') Message &nbsp;
+                
+                font(style='color:blue;') #{message.CustMessage}
+            
+                
+                font(style='color:red;') 
+                
+                font(style='color:blue;')
+            p(style='font-size:18px')
+                
+                font(style='color:red;') 
+                
+                font(style='color:blue;') 
+            
+                
+                font(style='color:red;') 
+                
+                font(style='color:blue;') 
+            
+                
+                font(style='color:red;') 
+                
+                font(style='color:blue;') 
+    
+    
+     
+    
+
+        
+    br
+        
+    
+
+    br
+
+    p 
+     a(href='/') Home
+    

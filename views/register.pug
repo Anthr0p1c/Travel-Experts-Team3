@@ -79,12 +79,13 @@ block content
       if errors
             ul
               each error in errors
-                if error == "Your Email address already exists. Please Login"
-                  li.alert.alert-danger.m3 #{error} 
-                  a(href="/indexsujani")  Login                  
-          
-                else 
-                  li.alert.alert-danger.m3= error
+                if (error.toString().includes("Error, expected `CustEmail` to be unique") || error.toString().includes("This Login Email already exists. Please Login by your email and password."))
+                
+                  li.alert.alert-danger.m3 This Login Email already exists. Please Login by your email and password. Or use a new Email!
+                  a(href="/")  Login
+                else
+                  
+                  li.alert.alert-danger.m3= error 
 
       section(style='align-items: center;')
         br
@@ -102,74 +103,74 @@ block content
               td(style='width: 30px;')
                 label First Name*:
               td
-                input#txtFirstName(type='text' name='firstname')
+                input#txtFirstName(type='text' name='firstname' value=postdata && postdata.firstname)
                 span#nameDescription
                 span#blankMsgName(style='color:red')  
             tr
               td(style='width: 30px;')
                 label Last Name*:
               td
-                input#txtLastName(type='text' name='lastname')
+                input#txtLastName(type='text' name='lastname' value=postdata && postdata.lastname)
                 span#lNameDescription
                 span#blankMsgLName(style='color:red')  
             tr
               td(style='width: 30px;')
                 label Password*:
               td
-                input#txtPassword(type='password' name='password')
+                input#txtPassword(type='password' name='password' value=postdata && postdata.password)
                 span#pNameDescription
                 span#blankMsgPName(style='color:red')  
             tr
               td(style='width: 30px;')
                 label Confirm Password*:
               td
-                input#txtConfirmPassword(type='password' name='confirmpassword')
+                input#txtConfirmPassword(type='password' name='confirmpassword' value=postdata && postdata.confirmpassword)
                 span#blankMsgPConfirmName(style='color:red')  
                 span#pConfirmNameDescription(style='color:red')  
             tr
               td(style='width: 30px;')
-                label Email Address*:
+                label Email Address/UserName*:
               td
-                input#txtEmail(type='text' required='true' name='email')
+                input#txtEmail(type='text' required='true' name='email' value=postdata && postdata.email)
                 span#blankMsgEmail(style='color:red')  
                 span#EmailDescription(style='color:red')  
             tr
               td(style='width: 30px;')
                 label Address:
               td
-                input#txtAddress(type='text' name='address')
+                input#txtAddress(type='text' name='address' value=postdata && postdata.address)
             tr
               td(style='width: 30px;')
                 label City:
               td
-                input#txtCity(type='text' name='city')
+                input#txtCity(type='text' name='city' value=postdata && postdata.city)
             tr
               td(style='width: 30px;')
                 label Province:
               td
-                input#txtProvince(type='text' name='province')
+                input#txtProvince(type='text' name='province' value=postdata && postdata.province)
             tr
               td(style='width: 30px;')
                 label PostalCode:
               td
-                input#txtPostalCode(type='text' name='postalcode')
+                input#txtPostalCode(type='text' name='postalcode' value=postdata && postdata.postalcode)
                 span#blankMsgPostal(style='color:red')  
                 span#postalDescription(style='color:red')  
             tr
               td(style='width: 30px;')
                 label Country:
               td
-                input#txtCountry(type='text' name='country')  
+                input#txtCountry(type='text' name='country' value=postdata && postdata.country)  
             tr
               td(style='width: 30px;')
                 label HomePhone:
               td
-                input#txtHomePhone(type='text' name='homephone')  
+                input#txtHomePhone(type='text' name='homephone' value=postdata && postdata.homephone)  
             tr
               td(style='width: 30px;')
                 label Business Phone:
               td
-                input#txtBusPhone(type='text' name='businessphone')    
+                input#txtBusPhone(type='text' name='businessphone' value=postdata && postdata.businessphone)    
             //- tr
             //-   td(style='width: 30px;')
             //-     label Agent ID:
