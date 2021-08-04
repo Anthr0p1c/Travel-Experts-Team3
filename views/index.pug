@@ -124,9 +124,20 @@ nav.navbar.navbar-expand-lg.navbar-light.bg-light(style='background-color: rgb(1
             else
               include login.pug
 
+      if currentUser && currentUser.role == "Senior Agent"
+       #navbarScroll.collapse.navbar-collapse(style='background-color: rgb(184, 191, 201);')
+        ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll(style='--bs-scroll-height: 100px;')
+          li.nav-item
+            a.nav-link.active(aria-current='page' href='/update/showdashboard')
+              b Agent DashBoard
 
-                
-          
+      if currentUser && currentUser.role == "manager"          
+       #navbarScroll.collapse.navbar-collapse(style='background-color: rgb(184, 191, 201);')
+        ul.navbar-nav.me-auto.my-2.my-lg-0.navbar-nav-scroll(style='--bs-scroll-height: 100px;')
+          li.nav-item
+            a.nav-link.active(aria-current='page' href='/update/showmanagerdashboard')
+              b Manager DashBoard
+   
         
 
 

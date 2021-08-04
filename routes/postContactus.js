@@ -63,7 +63,7 @@ router.get('/createcontact', function (req, res, next) {
 
 });
 
-
+//Get agents from DB as per the agency
 function getAgents(index, arr, req, res, next) {
     Agent.find({ AgencyId: arr[index].AgencyId }, function (err, result) {
         //Agent.find({}, function (err, result) {
@@ -145,10 +145,6 @@ router.get('/mycustdetails/:firstname', function (req, res, next) {
         }
     });
 });
-
-
-
-//////////
 
 
 

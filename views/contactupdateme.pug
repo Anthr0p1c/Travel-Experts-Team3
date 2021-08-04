@@ -53,6 +53,18 @@ center
                 label AgtEmail:
               td
                 input#txtAgtEmail(type='text' name='AgtEmail' value=AgtEmail size='30')
+            tr
+              td(style='width: 30px;')
+                
+              td
+                input#txtAgtEmail(type='hidden' name='_id' value=_id )
+            tr
+              td(style='width: 30px;')
+                
+              td
+                input#AgentId(type='hidden' name='AgentId' value=AgentId)
+
+
             tr 
               td
             tr
@@ -61,28 +73,31 @@ center
               td
                 select#AgtPosition
                     if AgtPosition.toString() == 'Senior Agent'
-                        option(value=AgtPosition selected=(AgtPosition.toString()== 'Senior Agent'? 'selected' : false)) Senior Agent
+                        option(value='Senior Agent' selected=(AgtPosition.toString()== 'Senior Agent'? 'selected' : false)) Senior Agent
                     
                         option(value='Junior Agent') Junior Agent
                         
                         option(value='Intermediate Agent') Intermediate Agent  
+                        input#AgtPosition(type='hidden' name='AgtPosition' value='Senior Agent' )
                     if AgtPosition.toString() == 'Intermediate Agent'
-                        option(value=AgtPosition selected=(AgtPosition.toString()== 'Intermediate Agent'? 'selected' : false)) Intermediate Agent
+                        option(value='Intermediate Agent' selected=(AgtPosition.toString()== 'Intermediate Agent'? 'selected' : false)) Intermediate Agent
                     
                         option(value='Junior Agent') Junior Agent
                         
-                        option(value='Senior Agent') Senior Agent  
+                        option(value='Senior Agent') Senior Agent
+                        input#AgtPosition(type='hidden' name='AgtPosition' value='Intermediate Agent' )  
                     if AgtPosition.toString() == 'Junior Agent'
-                        option(value=AgtPosition selected=(AgtPosition.toString()== 'Junior Agent'? 'selected' : false)) Junior Agent
+                        option(value='Junior Agent' selected=(AgtPosition.toString()== 'Junior Agent'? 'selected' : false)) Junior Agent
                     
                         option(value='Intermediate Agent') Intermediate Agent
                         
-                        option(value='Senior Agent') Senior Agent  
+                        option(value='Senior Agent') Senior Agent 
+                        input#AgtPosition(type='hidden' name='AgtPosition' value='Junior Agent' ) 
             tr 
               td    
             tr
               td(style='width: 30px;')
-                label Agent Location **:
+                label Agent Location :
               td  
                 if  AgencyId == 1
                     input(type='radio' name='AgencyId'  value=1 checked) 
@@ -108,6 +123,19 @@ center
             tr
               td(style='width: 30px;')
                 button.btn.btn-primary(type="submit", name="update") UPDATE
+br
+div
+  a(href='show') Back to All Contacts
+br
+div
+  a(href='/') Home 
+
+
+.container
+      if errors    
+        each error in errors
+            p.alert.alert-danger= error
+
               
 
 
