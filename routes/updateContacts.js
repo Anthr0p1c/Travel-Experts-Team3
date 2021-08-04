@@ -86,7 +86,6 @@ router.post("/updateagent", function (req, res, next) {
 
             foundObject.save(function (err, updateObject) {
                 if (err) {
-                    // console.log(err);
                     processErrors(err, 'error', req, res)
                 }
                 else {
