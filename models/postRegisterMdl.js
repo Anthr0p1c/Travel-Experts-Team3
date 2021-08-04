@@ -13,7 +13,6 @@ const { init } = require('../app');
 const uniqueValidator = require("mongoose-unique-validator");
 
 
-
 var lengthValidator = function (val) {
     if (val && val.length >= 5) {
         return true;

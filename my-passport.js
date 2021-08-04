@@ -1,7 +1,9 @@
+//Author:Sujani Wijesundera
 // npm i bcryptjs
 // npm i express-session
 // npm i passport
 // npm i passport-local
+
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require("passport-local").Strategy;

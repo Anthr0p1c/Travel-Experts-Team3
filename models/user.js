@@ -4,7 +4,6 @@ CPRG008
 Schema builld model for customer table.
 */
 
-
 const mongoose = require("mongoose");
 const uniqueValidator = require("mongoose-unique-validator");
 

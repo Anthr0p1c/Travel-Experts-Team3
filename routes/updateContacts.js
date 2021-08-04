@@ -106,7 +106,6 @@ router.get('/showsuccessmessage', function (req, res, next) {
     res.send('<br><br><b><center>Records of <font style=color:blue;>' + firstName + '</font>,&nbsp;Successfully updated!<br><br><a href="show">Back To Edit Agents</a><br><br><a href="/">Home</a></center></b>');
 });
 
-
 //display agent profile to edit
 router.post('/editcontact/', function (req, res, next) {
     console.log("inside contact udate");

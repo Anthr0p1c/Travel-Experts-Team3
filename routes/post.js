@@ -17,7 +17,6 @@ router.get('/create', function (req, res, next) {
   res.render('register');
 });
 
-
 // // To create a new post - mostafa
 // router.post('/create', function (req, res, next) {
 //   // const post = new Post(req.body);

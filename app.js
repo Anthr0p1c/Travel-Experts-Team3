@@ -9,6 +9,7 @@ var logger = require('morgan');
 
 //Routers
 
+
 var indexRouter = require('./routes/index');
 //User registration with passport - Sujani
 var usersRouter = require('./routes/users');

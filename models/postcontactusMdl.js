@@ -6,6 +6,7 @@
 // Require the mongoose module
 var mongoose = require('mongoose');
 const { init } = require('../app');
+
 //Unique validator
 const uniqueValidator = require("mongoose-unique-validator");
 

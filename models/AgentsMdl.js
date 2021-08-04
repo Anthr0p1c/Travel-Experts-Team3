@@ -8,7 +8,6 @@ Schema builld model for Agents.
 const mongoose = require("mongoose");
 //const uniqueValidator = require("mongoose-unique-validator");
 
-
 //Create Agencies schema
 const agentsSchema = new mongoose.Schema({
 
