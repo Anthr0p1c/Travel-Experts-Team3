@@ -148,6 +148,4 @@ router.get('/mycustdetails/:firstname', function (req, res, next) {
 
 
 
-
-
 module.exports = router;

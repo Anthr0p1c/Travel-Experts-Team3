@@ -89,7 +89,6 @@ router.post("/updateagent", function (req, res, next) {
                     processErrors(err, 'error', req, res)
                 }
                 else {
-                    // res.render("<center><b>" + firstName + "</b> Successfully updated! <br><a href='update/show'>Back To Edit Agents</a><br><a href='/'>Home</a>");
                     res.redirect("/update/showsuccessmessage?firstname=" + firstName);
 
                 }

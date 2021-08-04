@@ -70,8 +70,8 @@ router.post('/create', function (req, res, next) {
   post.CustEmail = req.body.email;
   post.CustPassword = req.body.password;
 
-  post.role = "manager";
-  post.AgentId = "10";
+  post.role = "customer";
+  post.AgentId = "0";
 
   post.save(err => {
 
