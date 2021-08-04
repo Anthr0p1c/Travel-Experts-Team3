@@ -77,7 +77,17 @@ const fees_schema = new mongoose.Schema({
     FeeAmt: { type: Number },
     FeeDesc: { type: String }
 },
-    { collection: "classes" })   
+    { collection: "fees" })   
+
+
+// Suppliers schema
+const suppliers_schema = new mongoose.Schema({
+    
+    _id: { type: Number },
+    SupplierId: { type: Number },
+    SupName: { type: String },
+},
+    { collection: "suppliers" })   
 
 
 travel_packages_schema.plugin(uniqueValidator)
@@ -85,6 +95,7 @@ regions_schema.plugin(uniqueValidator)
 trip_type_schema.plugin(uniqueValidator)
 classes_schema.plugin(uniqueValidator)
 fees_schema.plugin(uniqueValidator)
+suppliers_schema.plugin(uniqueValidator)
 
 
 module.exports.TravelPackagesModel = mongoose.model("TravelPackagesModel", travel_packages_schema)
@@ -92,3 +103,4 @@ module.exports.RegionsModel = mongoose.model("RegionsModel", regions_schema)
 module.exports.TripTypeModel = mongoose.model("TripTypeModel", trip_type_schema)
 module.exports.ClassesModel = mongoose.model("ClassesModel", classes_schema)
 module.exports.FeesModel = mongoose.model("FeesModel", fees_schema)
+module.exports.SupplierModel = mongoose.model("SupplierModel", suppliers_schema)
