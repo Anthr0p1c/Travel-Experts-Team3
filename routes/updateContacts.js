@@ -1,6 +1,7 @@
 /*
 Author: Sujani Wijesunder
 Date:02/08/20201
+Display and facilitate update contacts.
  */
 
 var express = require('express');
@@ -13,7 +14,7 @@ var i = 0;
 
 
 router.get('/show', function (req, res, next) {
-    console.log("%%%%%%%%%");
+
     var arrayCalgary1 = [];
     var arrayOkotus1 = [];
 
@@ -103,11 +104,19 @@ router.post('/editcontact/', function (req, res, next) {
     console.log("inside contact udate");
 
     var AgentId = req.body.AgentId;
+    var agentFName = req.body.AgtFirstName;
     console.log("inside contact AgentId** " + AgentId);
     // console.log(req.body);
     res.render('contactupdateme', {
-        //     title: "contactupdateme"
-        //     //agentname: CustFirstName
+        title: "contactupdate",
+        agentId: AgentId,
+        agentFirstName: agentFName,
+        AgtLastName: req.body.AgtLastName,
+        AgtMiddleInitial: req.body.AgtMiddleInitial,
+        AgtBusPhone: req.body.AgtBusPhone,
+        AgtEmail: req.body.AgtEmail,
+        AgtPosition: req.body.AgtPosition,
+        AgencyId: req.body.AgencyId
 
     });
 });
