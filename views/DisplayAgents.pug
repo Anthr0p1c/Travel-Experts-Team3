@@ -46,6 +46,13 @@ head
                li AgtPosition: #{agent.AgtPosition} 
                form(name='editcontact' action='/update/editcontact' method='post')
                 input(type='hidden' name='AgentId' value=agent.AgentId)
+                input(type='hidden' name='AgtFirstName' value=agent.AgtFirstName)
+                input(type='hidden' name='AgtLastName' value=agent.AgtLastName)
+                input(type='hidden' name='AgtMiddleInitial' value=agent.AgtMiddleInitial)
+                input(type='hidden' name='AgtBusPhone' value=agent.AgtBusPhone)
+                input(type='hidden' name='AgtEmail' value=agent.AgtEmail)
+                input(type='hidden' name='AgtPosition' value=agent.AgtPosition)
+                input(type='hidden' name='AgencyId' value=agent.AgencyId)
                 button.btn.btn-primary(type="submit", name="edit") EDIT CONTACT
                 
 
@@ -72,6 +79,16 @@ head
                 | Email: 
                 a(href='mailto:webmaster@travelexpert.com') #{agent.AgtEmail}
                li AgtPosition: #{agent.AgtPosition} 
+               form(name='editcontact' action='/update/editcontact' method='post')
+                input(type='hidden' name='AgentId' value=agent.AgentId)                
+                input(type='hidden' name='AgtFirstName' value=agent.AgtFirstName)
+                input(type='hidden' name='AgtLastName' value=agent.AgtLastName)
+                input(type='hidden' name='AgtMiddleInitial' value=agent.AgtMiddleInitial)
+                input(type='hidden' name='AgtBusPhone' value=agent.AgtBusPhone)
+                input(type='hidden' name='AgtEmail' value=agent.AgtEmail)
+                input(type='hidden' name='AgtPosition' value=agent.AgtPosition)
+
+                button.btn.btn-primary(type="submit", name="edit") EDIT CONTACT
             hr   
           br
         agentokotos=null  

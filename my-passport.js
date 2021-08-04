@@ -68,15 +68,13 @@ module.exports.init = function (app) {
     }),
     function (req, res) {
       console.log("Inside app login");
-      // const headermessage = `Welcome ${req.user?.username}`;
+      const headermessage = `Welcome ${req.user?.username}`;
       res.redirect("/?headermessage=" + headermessage);
     }
   );
   // After login, adds the user object to locals.currentUser which is accesible in the .pug files
   app.use((req, res, next) => {
     res.locals.currentUser = req.user;
-    console.log("current user=", res.locals.currentUser);
-    console.log(req.user);
     next();
   });
 

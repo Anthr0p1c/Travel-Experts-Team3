@@ -1,11 +1,118 @@
 doctype html
 head
-    title Pug
-    script(type='text/javascript').
-        if (foo) bar(1 + 5)
+  title Travel Experts
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css')
+  script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
+  script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
+  // CSS from bootstrap
+  link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
+
 body
-    h1 Pug - node template engine
+br
+br
+center 
+ form(name='updatecontact' action='/update/updateagent' method='post')   
     #container.col
-        p You are amazing #{agentname}
-        p Pug is a terse and simple templating language.
-            
+        p
+           font(color='red')
+            b Edit information of #{agentFirstName}
+
+        table.fontclass(border='0')
+            tr
+              td(style='width: 30px;')
+                label First Name:
+              td
+                input#txtFirstName(type='text' name='AgtFirstName' value=agentFirstName)
+            tr 
+              td        
+            tr
+              td(style='width: 30px;')
+                label Last Name:
+              td
+                input#txtLastName(type='text' name='AgtLastName' value=AgtLastName)
+            tr    
+              td     
+            tr
+              td(style='width: 30px;')
+                label Middle Initials:
+              td
+                input#txtMiddle(type='text' name='AgtMiddleInitial' value=AgtMiddleInitial)
+            tr 
+              td   
+            tr
+              td(style='width: 30px;')
+                label AgtBusPhone:
+              td
+                input#txtAgtBusPhone(type='text' name='AgtBusPhone' value=AgtBusPhone)
+            tr 
+              td    
+            tr
+              td(style='width: 30px;')
+                label AgtEmail:
+              td
+                input#txtAgtEmail(type='text' name='AgtEmail' value=AgtEmail size='30')
+            tr 
+              td
+            tr
+              td(style='width: 30px;')
+                label Agent Position:
+              td
+                select#AgtPosition
+                    if AgtPosition.toString() == 'Senior Agent'
+                        option(value=AgtPosition selected=(AgtPosition.toString()== 'Senior Agent'? 'selected' : false)) Senior Agent
+                    
+                        option(value='Junior Agent') Junior Agent
+                        
+                        option(value='Intermediate Agent') Intermediate Agent  
+                    if AgtPosition.toString() == 'Intermediate Agent'
+                        option(value=AgtPosition selected=(AgtPosition.toString()== 'Intermediate Agent'? 'selected' : false)) Intermediate Agent
+                    
+                        option(value='Junior Agent') Junior Agent
+                        
+                        option(value='Senior Agent') Senior Agent  
+                    if AgtPosition.toString() == 'Junior Agent'
+                        option(value=AgtPosition selected=(AgtPosition.toString()== 'Junior Agent'? 'selected' : false)) Junior Agent
+                    
+                        option(value='Intermediate Agent') Intermediate Agent
+                        
+                        option(value='Senior Agent') Senior Agent  
+            tr 
+              td    
+            tr
+              td(style='width: 30px;')
+                label Agent Location **:
+              td  
+                if  AgencyId == 1
+                    input(type='radio' name='AgencyId'  value=1 checked) 
+                    //input#AgencyId.form-check-input(type='radio' name='AgencyId' value=1 checked)
+                    label.form-check-label(for='AgencyId')
+                        | &nbsp; Calgary Head Office 
+                        
+                    input(type='radio' name='AgencyId'  value=2 )
+                    label.form-check-label(for='AgencyId')
+                        |   &nbsp; Okotas Office
+                if  AgencyId == 2
+                    input(type='radio' name='AgencyId'  value=1 )
+                    //input#AgencyId.form-check-input(type='radio' name='AgencyId' value=1 )
+                    label.form-check-label(for='AgencyId')
+                        | &nbsp; Calgary Head Office
+                    //.form-check
+                    //input#AgencyId.form-check-input(type='radio' name='AgencyId' value=2 checked)
+                    input(type='radio' name='AgencyId'  value=2 checked )
+                    label.form-check-label(for='AgencyId')
+                        | &nbsp; Okotas Office
+            tr 
+              td    
+            tr
+              td(style='width: 30px;')
+                button.btn.btn-primary(type="submit", name="update") UPDATE
+              
+
+
+
+
+
+
+
