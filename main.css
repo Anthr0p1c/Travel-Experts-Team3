@@ -1,0 +1,162 @@
+/* Css Reset */
+body,
+html,
+div,
+blockquote,
+img,
+label,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+ul,
+ol,
+li,
+dl,
+dt,
+dd,
+form,
+a,
+fieldset,
+input,
+th,
+td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: none;
+}
+
+body {
+    line-height: 1;
+    font-size: 88%
+        /* optional */
+    ;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    padding: .6em 0;
+    margin: 0 15px;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.floatLeft {
+    float: left;
+    padding: .5em .5em .5em 0;
+}
+
+.floatRight {
+    float: right;
+    padding: .5em 0 .5em .5em;
+}
+
+
+
+/* ------------------------------------------------------------------------------------ */
+/* My styling begins from here */
+body {
+    font-family: 'Catamaran', 'Cormorant Garamond', Arial, Helvetica, sans-serif;
+    background-color: rgb(209, 216, 216);
+}
+
+/* Contact us page */
+.main-collection {
+    border: burlywood 5px solid;
+    padding-bottom: 3em;
+}
+
+.collection-items {
+    padding: 6px;
+    margin: 1em;
+    font-size: 1.5em;
+    line-height: .5em;
+}
+
+
+.info  {
+    text-align: justify;
+    line-height: 1.2em;
+    padding: 0 3em 3em;
+    line-height: 1.5em;
+    font-size: 1.5em;
+}
+
+.contact {
+    text-align: center;
+    font-size: 2em;
+    font-weight: semi-bold;
+    
+}
+
+.travel {
+    padding-left: 2em;
+    font-size: 1.5em;
+    font-weight: semi-bold;
+    text-align: center;
+}
+
+fieldset {
+    margin: 0 3em 3em;
+}
+
+.card-text {
+    padding: .6em;
+    line-height: 1.5em;
+    font-size: 1.3em;
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-style: italic;
+    font-weight: normal;
+}
+
+textarea {
+    width:1100px; 
+    height:200px;
+    margin-left: 1em;
+    margin-bottom: 2em;
+    font-size: 1.5em;
+}
+
+.message {
+    font-weight: normal;
+    font-size: 1.5em;
+    
+}
+.btn-primary {
+    /* background-color: rgb(167, 218, 218); */
+    background-color: burlywood;
+    margin-left:  1em;
+    border: 1em solid burlywood;
+    border-radius: .8em;
+    font-size: 1.5em;
+}
+
+
+li {
+    list-style: none;
+}
