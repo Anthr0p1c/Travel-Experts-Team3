@@ -70,7 +70,8 @@ module.exports.init = function (app) {
     }),
     function (req, res) {
       console.log("Inside app login");
-      const headermessage = `Welcome ${req.user?.username}`;
+      //const headermessage = `Welcome ${req.user?.username}`;
+      const headermessage = `Welcome ${req.user.username}`;
       res.redirect("/?headermessage=" + headermessage);
     }
   );

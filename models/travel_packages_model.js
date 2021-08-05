@@ -6,16 +6,20 @@ PROJ-009
 
 // Includes Travel packages, Regions, Trip type, Classes, and Fees schemas pulled from mongodb cloud
 
+// Require the mongoose module (added bysujani)
+var mongoose = require('mongoose');
 
 
 // Connect to mongo cloud database
-const MongoClient = require('mongodb');
-const uri = "mongodb+srv://Anthropic:Rpu81opvi@cluster0.4annu.mongodb.net/travelexperts?retryWrites=true&w=majority";
-const mongoose = require('mongoose');
-mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {});
+
+//commented by sujani
+// const MongoClient = require('mongodb');
+// const uri = "mongodb+srv://Anthropic:Rpu81opvi@cluster0.4annu.mongodb.net/travelexperts?retryWrites=true&w=majority";
+// const mongoose = require('mongoose');
+// mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
+// const db = mongoose.connection;
+// db.on('error', console.error.bind(console, 'connection error:'));
+// db.once('open', function() {});
 
 // Unique validator to check form
 const uniqueValidator = require("mongoose-unique-validator");
@@ -24,7 +28,7 @@ const uniqueValidator = require("mongoose-unique-validator");
 
 // Travel packages schema
 const travel_packages_schema = new mongoose.Schema({
-    
+
     _id: { type: Number },
     PackageId: { type: Number },
     PkgName: { type: String },
@@ -39,7 +43,7 @@ const travel_packages_schema = new mongoose.Schema({
 
 // Regions schema
 const regions_schema = new mongoose.Schema({
-    
+
     _id: { type: String },
     RegionId: { type: String },
     RegionName: { type: String },
@@ -49,45 +53,45 @@ const regions_schema = new mongoose.Schema({
 
 // Trip types schema
 const trip_type_schema = new mongoose.Schema({
-    
+
     _id: { type: String },
     TripTypeId: { type: String },
     TTName: { type: String },
 },
-    { collection: "triptypes" })    
+    { collection: "triptypes" })
 
 
 // Classes schema
 const classes_schema = new mongoose.Schema({
-    
+
     _id: { type: String },
     ClassId: { type: String },
     ClassName: { type: String },
     ClassDesc: { type: String }
 },
-    { collection: "classes" })   
+    { collection: "classes" })
 
 
 // Fees schema
 const fees_schema = new mongoose.Schema({
-    
+
     _id: { type: String },
     FeeId: { type: String },
     FeeName: { type: String },
     FeeAmt: { type: Number },
     FeeDesc: { type: String }
 },
-    { collection: "fees" })   
+    { collection: "fees" })
 
 
 // Suppliers schema
 const suppliers_schema = new mongoose.Schema({
-    
+
     _id: { type: Number },
     SupplierId: { type: Number },
     SupName: { type: String },
 },
-    { collection: "suppliers" })   
+    { collection: "suppliers" })
 
 
 travel_packages_schema.plugin(uniqueValidator)
