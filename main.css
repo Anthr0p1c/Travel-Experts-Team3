@@ -156,7 +156,20 @@ textarea {
     font-size: 1.5em;
 }
 
-
 li {
     list-style: none;
 }
+
+/* About page */
+.about {
+    font-size: 1.5em;
+    margin:  1em 3em;
+    text-align: center;
+}
+
+.about-p {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    margin: 0 3em 3em;
+}
+
