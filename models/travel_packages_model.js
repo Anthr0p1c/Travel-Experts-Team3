@@ -93,6 +93,17 @@ const suppliers_schema = new mongoose.Schema({
 },
     { collection: "suppliers" })
 
+//Sujani added - Product schema
+// Suppliers schema
+const product_schema = new mongoose.Schema({
+
+    _id: { type: Number },
+    ProductId: { type: Number },
+    ProdName: { type: String },
+},
+    { collection: "products" })
+
+
 
 travel_packages_schema.plugin(uniqueValidator)
 regions_schema.plugin(uniqueValidator)
@@ -101,6 +112,8 @@ classes_schema.plugin(uniqueValidator)
 fees_schema.plugin(uniqueValidator)
 suppliers_schema.plugin(uniqueValidator)
 
+product_schema.plugin(uniqueValidator)
+
 
 module.exports.TravelPackagesModel = mongoose.model("TravelPackagesModel", travel_packages_schema)
 module.exports.RegionsModel = mongoose.model("RegionsModel", regions_schema)
@@ -108,3 +121,6 @@ module.exports.TripTypeModel = mongoose.model("TripTypeModel", trip_type_schema)
 module.exports.ClassesModel = mongoose.model("ClassesModel", classes_schema)
 module.exports.FeesModel = mongoose.model("FeesModel", fees_schema)
 module.exports.SupplierModel = mongoose.model("SupplierModel", suppliers_schema)
+
+module.exports.ProductModel = mongoose.model("ProductModel", product_schema)
+//console.log("&&&&&");

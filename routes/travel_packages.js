@@ -9,8 +9,9 @@ var router = express.Router();
 
 
 const TravelPackagesModel = require("../models/travel_packages_model").TravelPackagesModel
+const ProductModel = require("../models/travel_packages_model").ProductModel
 
-
+TravelPackagesModel
 router.get('/', function (req, res, next) {
    TravelPackagesModel.find((err, posts) => {
       res.render('travel_packages', { displayTravelPacks: posts });
@@ -26,7 +27,11 @@ router.get('/displaydetails', function (req, res, next) {
       if (err) {
          console.log(err);
       } else {
-         res.render('packagedetails', { title: 'Package Details', package: result });
+         ProductModel.find((err, products) => {
+            prodlist: products
+
+            res.render('packagedetails', { title: 'Package Details', package: result, prodlist: products });
+         });
       }
    });
 
