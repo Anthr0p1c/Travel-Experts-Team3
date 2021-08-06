@@ -7,7 +7,7 @@
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require("passport-local").Strategy;
-
+const env = require('dotenv').config()
 // Configure the app to use Passport
 module.exports.init = function (app) {
   console.log(process.env.PASSPORT_SECRET);
@@ -21,12 +21,12 @@ module.exports.init = function (app) {
 
 
   // Use a User Model to store and retrieve the user information
-  const { User } = require("./models/user.js");
+  const RegisterCust = require("./models/postRegisterMdl").RegisterCust
 
   passport.use(
     // Do the login check
     new LocalStrategy(function (username, password, done) {
-      User.findOne({ username: username }, function (err, user) {
+      RegisterCust.findOne({ username: username }, function (err, user) {
         if (err) {
           return done(err);
         } // Error loading user from DB

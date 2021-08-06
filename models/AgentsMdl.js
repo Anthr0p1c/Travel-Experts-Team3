@@ -59,6 +59,6 @@ const agentsSchema = new mongoose.Schema({
     agent: { type: mongoose.Schema.Types.ObjectId, ref: "agencies" },
 
 });
-console.log("$$$$$$$$$");
+
 
 module.exports.Agent = mongoose.model('agents', agentsSchema);
