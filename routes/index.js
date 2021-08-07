@@ -42,43 +42,44 @@ router.get('/', function(req, res, next) {
 router.post("/", (req,res,next) => {
 
   // res.status(204).send()
-  bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
-    if (err) throw err;
+  // bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+  //   if (err) throw err;
 
-    const register = new RegisterCust()
+  const register = new RegisterCust()
 
-    register.email = req.body.email,
-    register.password = req.body.password,
-    register.fname = req.body.fname,
-    register.lname = req.body.lname,
-    register.address = req.body.address,
-    register.postal = req.body.postal,
-    register.province = req.body.province,
-    register.country = req.body.country
+  register.email = req.body.email,
+  register.password = req.body.password,
+  register.fname = req.body.fname,
+  register.lname = req.body.lname,
+  register.address = req.body.address,
+  register.postal = req.body.postal,
+  register.province = req.body.province,
+  register.country = req.body.country
 
 
-    custId = custId + 1;  //increase existing id by one
-    register._id = custId;
-    register.CustomerId = custId.toString();
-    register.role = "Senior Agent";
-    register.AgentId = 1;
-    register.password = hashedPassword;
-    
-    // Render error array if errors, otherwise save data to database and redirect to thank you page
-    register.save(err => {
-        if (err) {
-            const errorArray = [];
-            const errorKeys = Object.keys(err.errors);
-            errorKeys.forEach(key => errorArray.push(err.errors[key].message));
-            return res.render("/", {
-              errors: errorArray
-            })
-        }
+  custId = custId + 1;  //increase existing id by one
+  register._id = custId;
+  register.CustomerId = custId.toString();
+  register.role = "Senior Agent";
+  register.AgentId = 1;
+  // register.password = hashedPassword;
+  
+  // Render error array if errors, otherwise save data to database and redirect to thank you page
+  register.save(err => {
+      if (err) {
+          const errorArray = [];
+          const errorKeys = Object.keys(err.errors);
+          errorKeys.forEach(key => errorArray.push(err.errors[key].message));
+          return 
+          
+           
+      }
+        // next()
         // res.redirect("/post/addregistration?user=" + req.body.firstname);
         // res.end()
         res.redirect("/")
     })
-  })
+  
 })
 
 

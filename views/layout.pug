@@ -13,7 +13,7 @@ head
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   link(rel='stylesheet' href='/stylesheets/style.css')
-  //- script(type='text/javascript' src='./public/javascripts/form.js')
+  script(type='text/javascript' src='/javascripts/regex.js')
   title Travel Experts
 
 
@@ -62,7 +62,7 @@ head
 // Register form
 <div class="form-popup" id="myRegisterForm">
   // On form submit call verification function
-  <form action='/' class="form-container-register" method='POST'>
+  <form action='/' class="form-container-register" onSubmit="return Validate()" method='POST'>
     
     .row
       .leftTable
@@ -121,10 +121,7 @@ head
 
     // Display errors if form fields not correct      
     .row
-      if errors
-        ul
-          each error in errors
-            li=error
+      h1(id="errors")
             
       <button type="button" class="btn cancel" onclick="closeRegisterForm()">Close</button>
       <button type="submit" class="btn">Register</button>

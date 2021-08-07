@@ -9,9 +9,7 @@ var logger = require('morgan');
 const mongoSanitize = require("express-mongo-sanitize");
 var app = express();
 //Routers
-// view engine setup
-app.set('views', path.join(__dirname, '/views'));
-app.set('view engine', 'pug');
+
 
 var indexRouter = require('./routes/index');
 //User registration with passport - Sujani
@@ -25,7 +23,10 @@ var updateContact = require('./routes/updateContacts');
 var travelPacksRouter = require("./routes/travel_packages")
 
 
-
+// view engine setup
+// app.set('views', path.join(__dirname, '/views'));
+app.set('views', './views');
+app.set('view engine', 'pug');
 
 
 
@@ -84,6 +85,7 @@ app.use('/contact', postContact);
 //Sujani - update contact route
 app.use('/update', updateContact);
 
+
 //David-  Show packages route
 app.use("/travel_packages", travelPacksRouter)
 
@@ -104,6 +106,13 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-// app.listen(8000)
+// app.listen(3000)
+
+
+
+
+
+
+
 
 module.exports = app;
