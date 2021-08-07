@@ -21,12 +21,12 @@ module.exports.init = function (app) {
 
 
   // Use a User Model to store and retrieve the user information
-  const RegisterCust = require("./models/postRegisterMdl").RegisterCust
+  const  User = require("./models/postRegisterMdl").RegisterCust
 
   passport.use(
     // Do the login check
     new LocalStrategy(function (username, password, done) {
-      RegisterCust.findOne({ username: username }, function (err, user) {
+      User.findOne({ username: username }, function (err, user) {
         if (err) {
           return done(err);
         } // Error loading user from DB
@@ -56,7 +56,11 @@ module.exports.init = function (app) {
     });
   });
 
-
+  // After login, adds the user object to locals.currentUser which is accesible in the .pug files
+  app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+  });
 
   // Initialize Passport
   app.use(passport.initialize());
@@ -65,21 +69,19 @@ module.exports.init = function (app) {
   app.post(
     "/login",
     passport.authenticate("local", {
-
+      
       failureRedirect: "/"
     }),
     function (req, res) {
-      console.log("Inside app login");
+      // console.log("Inside app login");
       //const headermessage = `Welcome ${req.user?.username}`;
       const headermessage = `Welcome ${req.user.username}`;
       res.redirect("/?headermessage=" + headermessage);
+
+      // res.redirect("/")
     }
   );
-  // After login, adds the user object to locals.currentUser which is accesible in the .pug files
-  app.use((req, res, next) => {
-    res.locals.currentUser = req.user;
-    next();
-  });
+
 
   // The logout endpoint
   app.get("/log-out", (req, res) => {

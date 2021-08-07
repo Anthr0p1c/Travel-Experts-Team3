@@ -18,7 +18,7 @@ var usersRouter = require('./routes/users');
 var postContact = require('./routes/postContactus');
 //update contact - Sujani
 var updateContact = require('./routes/updateContacts');
-
+var aboutUs = require('./routes/aboutUs');
 //David's Packages
 var travelPacksRouter = require("./routes/travel_packages")
 
@@ -68,7 +68,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', function () {
   console.log("we're connected!*")
 });
-
+// delete db.models['customers'];
 //end DB connection-----------------------------------------------------End Sujani Added
 
 // -------------------------------------------------------------
@@ -81,13 +81,17 @@ app.use('/', indexRouter);
 //Sujani - user register route
 app.use('/post', usersRouter);
 //Sujani - show contacts route
-app.use('/contact', postContact);
+app.use('/contactus', postContact);
 //Sujani - update contact route
 app.use('/update', updateContact);
-
+app.use('/about', aboutUs);
 
 //David-  Show packages route
 app.use("/travel_packages", travelPacksRouter)
+
+
+
+
 
 
 //catch 404 and forward to error handler
@@ -99,6 +103,7 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
+  res.locals.currentUser = ""
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
