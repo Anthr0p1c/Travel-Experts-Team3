@@ -6,8 +6,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const mongoSanitize = require("express-mongo-sanitize");
-var app = express();
+
 //Routers
 
 
@@ -18,17 +17,17 @@ var usersRouter = require('./routes/users');
 var postContact = require('./routes/postContactus');
 //update contact - Sujani
 var updateContact = require('./routes/updateContacts');
-var aboutUs = require('./routes/aboutUs');
+
 //David's Packages
 var travelPacksRouter = require("./routes/travel_packages")
 
 
+const mongoSanitize = require("express-mongo-sanitize");
+var app = express();
+
 // view engine setup
-// app.set('views', path.join(__dirname, '/views'));
-app.set('views', './views');
+app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-
-
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -53,6 +52,14 @@ var mongoose = require('mongoose');
 //var mongoDB = 'mongodb://localhost:27017/travelexperts';
 var mongoDB = "mongodb+srv://Sujani:Sujani123@cluster0.4annu.mongodb.net/travelexperts?retryWrites=true&w=majority";
 
+//my connection cluster db
+//var mongoDB = "mongodb+srv://Ilup75:Ilup75@cluster0.zigid.mongodb.net/blog?retryWrites=true&w=majority";
+
+//Travelexperts
+//var mongoDB = "mongodb+srv://Ilup75:Ilup75@cluster0.zigid.mongodb.net/travelexperts?retryWrites=true&w=majority";
+
+//old way to get connection
+//mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //new way from .env
 mongoose.connect(process.env.MONGO_URL || mongoDB, {
@@ -68,7 +75,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', function () {
   console.log("we're connected!*")
 });
-// delete db.models['customers'];
+
 //end DB connection-----------------------------------------------------End Sujani Added
 
 // -------------------------------------------------------------
@@ -81,17 +88,12 @@ app.use('/', indexRouter);
 //Sujani - user register route
 app.use('/post', usersRouter);
 //Sujani - show contacts route
-app.use('/contactus', postContact);
+app.use('/contact', postContact);
 //Sujani - update contact route
 app.use('/update', updateContact);
-app.use('/about', aboutUs);
 
 //David-  Show packages route
 app.use("/travel_packages", travelPacksRouter)
-
-
-
-
 
 
 //catch 404 and forward to error handler
@@ -103,7 +105,6 @@ app.use(function (req, res, next) {
 app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.currentUser = ""
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
@@ -111,13 +112,6 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-// app.listen(3000)
-
-
-
-
-
-
-
+app.listen(8000)
 
 module.exports = app;

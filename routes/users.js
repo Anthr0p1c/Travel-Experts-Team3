@@ -64,7 +64,6 @@ router.post('/create', function (req, res, next) {
   bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
     if (err) throw err;
     // Replace the plain password with the hashed password
-    console.log("hashedPassword-->", hashedPassword);
 
     const user = new User();
 
@@ -84,8 +83,8 @@ router.post('/create', function (req, res, next) {
     user.CustEmail = req.body.email;
     user.username = req.body.email;
     user.password = req.body.password;
-    user.role = "Senior Agent";
-    user.AgentId = 1;
+    user.role = "customer";
+    user.AgentId = 0;
 
 
     const errs = user.validateSync(); // Run the model validation

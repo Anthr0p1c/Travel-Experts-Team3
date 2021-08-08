@@ -22,21 +22,36 @@ if package
      li.list-group-item Package BasePrice: #{package.PkgBasePrice}
 
     if prodlist
+     
      div 
      b
-       Available Available Products With Package
+       Available Available Products With Package  
      br
      br
      div
+
+
      each product in prodlist    
       .col-md-4 
         ul.list-group
             li.list-group-item.active  #{product.ProdName}
 
                  
-
+    
      br
-     a.btn.btn-primary.col-12(href='/travel_packages/displaydetails?PackageId='+package.PackageId) BUY PACKAGE
+    form(name='f1' action='/travel_packages/buyingdisplay' method='post')
+     input(type='hidden' name='PackageId' value=package.PackageId) 
+     input(type='hidden' name='PkgName' value=package.PkgName) 
+     input(type='hidden' name='PkgEndDate' value=package.PkgEndDate)
+     input(type='hidden' name='PkgStartDate' value=package.PkgStartDate)
+     input(type='hidden' name='PkgDesc' value=package.PkgDesc)
+     input(type='hidden' name='PkgBasePrice' value=package.PkgBasePrice)
+
+     input(type='hidden' name='prodlist' value=prodlist)
+     
+     input(type='submit' name='submit' value='ADD TO CART')
+ 
+     //a.btn.btn-primary.col-12(href='/travel_packages/buyingdisplay?PackageId='+package.PackageId) BUY PACKAGE
 
 div(style='clear:both')
 

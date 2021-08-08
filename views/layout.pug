@@ -40,14 +40,24 @@ head
         a(href='#' onclick='displayRegisterForm()') Register
         a(href="#" onclick='displayForm()') Sign in
         if currentUser
-          span Welcome Back #{currentUser.username}  
+          span Welcome  #{currentUser.username} 
+          a(href="/log-out") Log Out 
       // Bottom left links on banner
       .tabs
-        a(href='packages.html') Vacation Packages
+        //a(href='packages.html') Vacation Packages        
+        a(href='/travel_packages') Vacation Packages
         a(href='hotels.html') Hotels
         a(href='offers.html') Special Offers
-        a(href='/contactus') Contact
+        a(href='/contact/createcontact') Contact
         a(href="/about") About Us
+        //a(href="/travel_packages") Travel 
+        
+        if currentUser && currentUser.role == "Senior Agent"
+         a(href="/update/showdashboard") Agent DashBoard
+         
+       
+        if currentUser && currentUser.role == "manager"
+         a(href='/update/showmanagerdashboard') Manager DashBoard
       // Drop down hamburger menu if the screen is less than 600px wide
       .dropdownright
         .dropdown

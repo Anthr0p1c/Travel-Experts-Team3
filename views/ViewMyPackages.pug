@@ -7,24 +7,24 @@ head
   script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js')
   script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
   // CSS from bootstrap
-  //link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
-
+  
   link(rel='stylesheet' href='/stylesheets/style.css')
   
 
+p #{flag}
 
-
-if displayTravelPacks
-  each post in displayTravelPacks
+if MyPackages
+  each post in MyPackages
 
    .col-md-4 
     ul.list-group
      li.list-group-item.active  
-      a.hre(href='/travel_packages/displaydetails?PackageId='+post.PackageId)  #{post.PkgName}
-     li.list-group-item Package StartDate: #{post.PkgStartDate} 
+     // a.hre(href='/travel_packages/displaydetails?PackageId='+post.PackageId)  
+     li.list-group-item Package StartDate: #{post.BookingDate} 
+     li.list-group-item Number Of Travelers: #{post.TravelerCount}
      
      li.list-group-item 
-      a.btn.btn-primary.col-12(href='/travel_packages/displaydetails?PackageId='+post.PackageId) View Package Details
+     // a.btn.btn-primary.col-12(href='/travel_packages/displaydetails?PackageId='+post.PackageId) View Package Details
 
   a(href='/') Home    
       

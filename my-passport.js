@@ -7,10 +7,10 @@
 const passport = require("passport");
 const bcrypt = require("bcryptjs");
 const LocalStrategy = require("passport-local").Strategy;
-const env = require('dotenv').config()
+
 // Configure the app to use Passport
 module.exports.init = function (app) {
-  console.log(process.env.PASSPORT_SECRET);
+  //console.log(process.env.PASSPORT_SECRET);
   app.use(
     require("express-session")({
       secret: process.env.PASSPORT_SECRET,   //"sdsdsfsofdkdk;dfddsb"
@@ -21,7 +21,7 @@ module.exports.init = function (app) {
 
 
   // Use a User Model to store and retrieve the user information
-  const  User = require("./models/postRegisterMdl").RegisterCust
+  const { User } = require("./models/user.js");
 
   passport.use(
     // Do the login check
@@ -56,11 +56,7 @@ module.exports.init = function (app) {
     });
   });
 
-  // After login, adds the user object to locals.currentUser which is accesible in the .pug files
-  app.use((req, res, next) => {
-    res.locals.currentUser = req.user;
-    next();
-  });
+
 
   // Initialize Passport
   app.use(passport.initialize());
@@ -69,19 +65,27 @@ module.exports.init = function (app) {
   app.post(
     "/login",
     passport.authenticate("local", {
-      
+
       failureRedirect: "/"
     }),
     function (req, res) {
-      // console.log("Inside app login");
-      //const headermessage = `Welcome ${req.user?.username}`;
-      const headermessage = `Welcome ${req.user.username}`;
-      res.redirect("/?headermessage=" + headermessage);
+      console.log("Inside app login");
 
-      // res.redirect("/")
+      if (req.body.shopping == "shopping") { // redirect user to the packages page after login       
+
+        //var packageId = req.body.PackageId;
+        //res.redirect('/travel_packages/displaydetails?PackageId=' + packageId);
+        res.redirect('/travel_packages');
+      }
+      res.redirect('/');
+
     }
   );
-
+  // After login, adds the user object to locals.currentUser which is accesible in the .pug files
+  app.use((req, res, next) => {
+    res.locals.currentUser = req.user;
+    next();
+  });
 
   // The logout endpoint
   app.get("/log-out", (req, res) => {

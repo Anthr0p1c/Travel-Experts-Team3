@@ -1,0 +1,121 @@
+
+head
+  title Buying package
+  
+  if currentUser  
+   h2 
+    center
+     Hi #{currentUser.CustFirstName} , Please get your favorite vacation package here.
+    br
+    form(name='f1' action='gocart' method='post')
+    
+      table#t01
+        tr
+          th Departing From
+          th Calgary
+          th To
+          th  #{PkgDesc} From #{PkgStartDate} to #{PkgEndDate}
+
+        tr 
+        tr  
+        tr
+          td Leave(CheckIn)
+          td
+            input(type='date' name='TripStart' value='checkIndate')
+          td Return
+          td
+            input(type='date' name='TripEnd' value='checkOut')
+        tr
+          td Number of Travelers
+        tr
+          td Adults
+          td
+            input(type='number' name='TravelerCount' min='1' max='10')
+        tr
+          td Children
+          td
+            input(type='number' name='TravelerCountC' min='0' max='10')
+        tr
+          td Trip Type
+          td
+            select(name='TripTypeId')
+              option(value='L') Leisure
+              option(value='B') Business
+              option(value='G') Group
+        tr
+          td Class Type
+          td
+            select(name='ClassId')
+              option(value='NA') Not Applicable
+              option(value='ECN') Economy
+              option(value='FST') First Class
+              option(value='BSN') Business Class
+              option(value='DLX') Delux
+              option(value='SNG') Single
+              option(value='DBL') Double
+              option(value='OCNV') Ocean View
+              option(value='INT') Interior
+        tr
+          td Products
+        tr
+        tr
+          td
+            input(type='checkbox' name='ProductId' value='6')
+            | Motor Coach
+          td
+            input(type='checkbox' name='ProductId' value='8')
+            | Tours
+          td
+        tr
+          td
+            input(type='hidden' name='FeeId' value='BK')
+        tr
+          td
+            input(type='hidden' name='RegionId' value='NA')
+          
+        tr
+          td
+          
+            input(type='hidden' name='CustomerId' value=currentUser.CustomerId)
+            input(type='hidden' name='PackageId' value=PackageId)
+            input(type='hidden' name='PkgStartDate' value=PkgStartDate)
+            input(type='hidden' name='PkgEndDate' value=PkgEndDate)
+            input(type='hidden' name='PkgDesc' value=PkgDesc) 
+            input(type='hidden' name='PkgBasePrice' value=PkgBasePrice)
+            //input(type='hidden' name='TravelerCount' value=TravelerCount)  
+            //input(type='hidden' name='TravelerCountC' value=TravelerCountC)  
+            input(type='hidden' name='prodlist' value=prodlist)    
+        tr
+        tr
+          td
+            input(type='submit' name='submit' value='CHECKOUT')
+  else 
+    center
+     h4
+      Please Please login or register your account before buying the package        
+    
+      .bg-info
+        if errors
+         ul
+          each error in errors
+           li.alert.alert-danger.m3= error
+
+        form.row.g-3(action="/login" method="POST")
+          .col
+            h5 Please Log In
+          .col            
+            input.form-control(name="username" placeholder="Username" type="text")
+          .col
+            input.form-control(name="password" type="password" placeholder="Password")
+            input.form-control(name="shopping" type="hidden" value="shopping")
+            input.form-control(name="PackageId" type="hidden" value=PackageId)
+          
+          .col
+            button.btn.btn-primary.mb-2 Log In
+
+      a.float-end.bg-info.bg-gradient(href="/post/create") 
+          h5 Register
+
+br
+
+a(href='/travel_packages/') BACK TO PACKAGES

@@ -26,14 +26,31 @@ const uniqueValidator = require("mongoose-unique-validator");
 
 
 
-// Travel packages schema
+// Travel packages schema - SujaniAdded
 const travel_packages_schema = new mongoose.Schema({
 
     _id: { type: Number },
     PackageId: { type: Number },
     PkgName: { type: String },
-    PkgStartDate: { type: Date },
-    PkgEndDate: { type: Date },
+    PkgStartDate: {
+        type: Date,
+        validate: {
+            validator: function (selectDate, packageStartDate) {
+                return selectDate >= packageStartDate;
+            },
+            message: props => `Selected Start Date Can't be Less than the Package Start Date.`
+        }
+
+    },
+    PkgEndDate: {
+        type: Date,
+        validate: {
+            validator: function (selectDate, packageEndDate) {
+                return selectDate <= packageStartDate;
+            },
+            message: props => `Selected End Date Can't be Less than the Package End Date.`
+        }
+    },
     PkgDesc: { type: String },
     PkgBasePrice: { type: Number },
     PkgAgencyCommission: { type: Number }
@@ -103,6 +120,44 @@ const product_schema = new mongoose.Schema({
 },
     { collection: "products" })
 
+//Sujani added - Product schema
+// Suppliers schema
+const bookings_schema = new mongoose.Schema({
+
+    _id: { type: Number },
+    BookingId: { type: Number },
+    BookingDate: { type: Date },
+    BookingNo: { type: String },
+    TravelerCount: { type: Number },
+    CustomerId: { type: Number },
+    TripTypeId: { type: String },
+    PackageId: { type: Number },
+},
+    { collection: "bookings" })
+
+const bookings_detail_schema = new mongoose.Schema({
+
+    _id: { type: Number },
+    BookingDetailId: { type: Number },
+    ItineraryNo: { type: Number },
+    BookingNo: { type: String },
+    TripStart: { type: Date },
+    TripEnd: { type: Date },
+    Description: { type: String },
+    Destination: { type: String },
+    BasePrice: { type: Number },
+    AgencyCommission: { type: Number },
+    BookingId: { type: Number },
+    RegionId: { type: String },
+    ClassId: { type: String },
+    FeeId: { type: String },
+    ProductSupplierId: { type: Number },
+
+
+},
+    { collection: "bookingdetails" })
+
+
 
 
 travel_packages_schema.plugin(uniqueValidator)
@@ -113,6 +168,8 @@ fees_schema.plugin(uniqueValidator)
 suppliers_schema.plugin(uniqueValidator)
 
 product_schema.plugin(uniqueValidator)
+bookings_schema.plugin(uniqueValidator)
+bookings_detail_schema.plugin(uniqueValidator)
 
 
 module.exports.TravelPackagesModel = mongoose.model("TravelPackagesModel", travel_packages_schema)
@@ -123,4 +180,7 @@ module.exports.FeesModel = mongoose.model("FeesModel", fees_schema)
 module.exports.SupplierModel = mongoose.model("SupplierModel", suppliers_schema)
 
 module.exports.ProductModel = mongoose.model("ProductModel", product_schema)
+module.exports.BookingModel = mongoose.model("BookingModel", bookings_schema)
+module.exports.BookingDetailModel = mongoose.model("BookingDetailModel", bookings_detail_schema)
+
 //console.log("&&&&&");

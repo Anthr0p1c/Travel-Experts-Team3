@@ -1,0 +1,91 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1')
+  title Credit Card Validation Demo
+  link(href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet')
+  link(rel='stylesheet' href='http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+  link(rel='stylesheet' type='text/css' href='assets/css/styles.css')
+  link(rel='stylesheet' type='text/css' href='assets/css/demo.css')
+  
+.padding
+  .row
+    .col-sm-3
+      .card
+        .card-header
+          
+          strong enter your card details
+        br
+     
+        .card-body
+          .row
+            .col-sm-12
+              .form-group
+                label(for='name') Name
+                input#name.form-control(type='text' placeholder='Enter your name')
+          .row
+            .col-sm-12
+              .form-group
+                label(for='ccnumber') Credit Card Number
+                .input-group
+                  input.form-control(type='text' placeholder='0000 0000 0000 0000' autocomplete='email')
+                  .input-group-append
+                    span.input-group-text
+                      i.mdi.mdi-credit-card
+          .row
+            .form-group.col-sm-4
+              label(for='ccmonth') Month
+              select#ccmonth.form-control
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+                option 7
+                option 8
+                option 9
+                option 10
+                option 11
+                option 12
+            .form-group.col-sm-4
+              label(for='ccyear') Year
+              select#ccyear.form-control
+                option 2021
+                option 2022
+                option 2023
+                option 2024
+                option 2025
+            .col-sm-4
+              .form-group
+                label(for='cvv') CVV/CVC
+                input#cvv.form-control(type='text' placeholder='123')
+            .col-sm-4
+              .form-group
+                label(for='cvv') Total Amount #{PkgBasePrice}
+                
+    
+        
+          .card-footer
+            form(name='f1' action='buypackagecomplete' method='post')  
+             input#cvv.form-control(type='hidden' name='PkgBasePrice' value=PkgBasePrice)
+             input#cvv.form-control(type='hidden' name='PackageId' value=PackageId)   
+             input#cvv.form-control(type='hidden' name='PkgName' value=PkgName)  
+             input#cvv.form-control(type='hidden' name='PkgStartDate' value=PkgStartDate)
+             input#cvv.form-control(type='hidden' name='PkgEndDate' value=PkgEndDate)
+             input#cvv.form-control(type='hidden' name='PkgDesc' value=PkgDesc)
+             input#cvv.form-control(type='hidden' name='TripStart' value=TripStart)
+             input#cvv.form-control(type='hidden' name='TripEnd' value=TripEnd)
+             input#cvv.form-control(type='hidden' name='TravelerCount' value=TravelerCount)
+             input#cvv.form-control(type='hidden' name='TripTypeId' value=TripTypeId)
+             input#cvv.form-control(type='hidden' name='ClassId' value=ClassId)
+             input#cvv.form-control(type='hidden' name='ProductId' value=ProductId)
+             input#cvv.form-control(type='hidden' name='FeeId' value=FeeId)
+             input#cvv.form-control(type='hidden' name='RegionId' value=RegionId)
+             input#cvv.form-control(type='hidden' name='CustomerId' value=currentUser.CustomerId)
+             
+             input.btn.btn-sm.btn-success.float-right(type='submit' value='Continue')
+            
+            button.btn.btn-sm.btn-danger(type='reset')
+              i.mdi.mdi-lock-reset
+              |  Reset
