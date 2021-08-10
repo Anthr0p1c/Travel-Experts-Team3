@@ -469,15 +469,10 @@ p.centerTable {
 
 
 .flex {
-<<<<<<< Updated upstream
-  display: flex;
-  flex-flow: row;
-=======
   margin-left: 5%;
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
->>>>>>> Stashed changes
 }
 
 
@@ -506,11 +501,7 @@ p.centerTable {
   margin-left: 10px;
 }
 
-<<<<<<< Updated upstream
-.form-container-register input[type=text], .form-container input[type=password] {
-=======
 .form-container-register input[type=text], .form-container-register input[type=password] {
->>>>>>> Stashed changes
   width: 100%;
   padding-right: 25px;
 }

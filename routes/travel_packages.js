@@ -229,10 +229,6 @@ router.post('/buypackagecomplete', function (req, res, next) {
    bookingDetail.ProductSupplierId = ProductId;
 
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
    bookingDetail.save((err, result1) => {
       if (err) {
          console.log("err bookingDetail", err);
@@ -247,40 +243,11 @@ router.post('/buypackagecomplete', function (req, res, next) {
       res.render('suceesspayment', { title: "PaymentSucess" });
    });
 
-<<<<<<< Updated upstream
-});
-
-//Sujani Added - Dispaly all customer's packages
-router.get('/ViewMyPackages', function (req, res, next) {
-   //TravelPackagesModel.find((err, posts) => {
-   if (req.user) {
-      var customerId = req.user.CustomerId;
-
-      BookingModel.find({ CustomerId: customerId }, function (err, result) {
-         if (err) {
-            console.log(err);
-         } else {
-            console.log(result[0].BookingId);
-            res.render('ViewMyPackages', { title: 'My Package Details', MyPackages: result });
-
-         }
-      });
-   }
-   else {
-      res.render('ViewMyPackages', { title: 'My Package Details', flag: "Please Login Before View your Packages. a(href='/') HOME" });
-   }
-
-   //res.render('travel_packages', { displayTravelPacks: posts });
-   //});
-});
-
-=======
    //res.render("suceesspayment"); // Redirect to thank you page
 
 
 
 
 });
->>>>>>> Stashed changes
 
 module.exports = router;
