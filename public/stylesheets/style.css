@@ -580,11 +580,51 @@ p.centerTable {
   margin-right: 8%;
   width: 40%;
 }
+
+
+
+
+
 .img-cont{
   margin-top: 7%;
+  
+}
+.small-img-cont {
+  float: left;
+  padding: 10px;
+  display: flex;
+  flex-flow: row;
+  /* flex-wrap: wrap; */
+  width: 50%;
+}
+.small-img-cont img {
+  float: left;
+  width: 100%;
+  height: auto;
+  padding: 10px;
 
 }
+.small-col img{
+  opacity: 0.8;
+  cursor: pointer;
+}
+.small-col img:hover{
+  opacity: 1;
+}
+.descText {
+  margin-top: 5px;
+  font-size: large;
+
+}
+/* .small-col:after{
+  content: "";
+  display: table;
+  clear: both;
+} */
+
+
+
 
 .buyButton{
-  margin-right: 10%;
+  margin-right: 5%;
 }

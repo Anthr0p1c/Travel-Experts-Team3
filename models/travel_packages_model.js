@@ -12,15 +12,6 @@ var mongoose = require('mongoose');
 
 // Connect to mongo cloud database
 
-//commented by sujani
-// const MongoClient = require('mongodb');
-// const uri = "mongodb+srv://Anthropic:Rpu81opvi@cluster0.4annu.mongodb.net/travelexperts?retryWrites=true&w=majority";
-// const mongoose = require('mongoose');
-// mongoose.connect(uri, {useNewUrlParser: true, useUnifiedTopology: true});
-// const db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-// db.once('open', function() {});
-
 // Unique validator to check form
 const uniqueValidator = require("mongoose-unique-validator");
 
@@ -54,7 +45,8 @@ const travel_packages_schema = new mongoose.Schema({
     PkgDesc: { type: String },
     PkgBasePrice: { type: Number },
     PkgAgencyCommission: { type: Number },
-    Img: { type: String }
+    Img: { type: String },
+    LongDesc: { type: String }
 },
     { collection: "packages" })
 

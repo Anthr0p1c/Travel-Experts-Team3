@@ -12,6 +12,7 @@ block content
   // CSS from bootstrap
   //link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
   link(rel='stylesheet' href='/stylesheets/style.css')
+  script(type='text/javascript' src='/javascripts/imgExpand.js')
   .flex
     if package
       .div
@@ -38,26 +39,40 @@ block content
               ul.list-group
                   li.list-group-item.active  #{product.ProdName}
         .img-cont
-          img(src=package.Img alt='' width="50%" height='auto')
-          br
+          img(src=package.Img + ".png" alt='' id="mainImg" width="50%" height='auto')
+        .small-img-cont 
+          .small-col 
+            img(src=package.Img + ".png" id="small1" onclick="imgExpand(this)")
+          .small-col 
+            img(src=package.Img + "1.png" id="small2" onclick="imgExpand(this)") 
+          .small-col 
+            img(src=package.Img + "2.png" id="small3" onclick="imgExpand(this)") 
+          .small-col 
+            img(src=package.Img + "3.png" id="small4" onclick="imgExpand(this)") 
+             
+
+
+
+        br
+        .descText
           p #{package.LongDesc}
 
 
-                      
-          
-          br
-          form(name='f1' action='/travel_packages/buyingdisplay' method='post')
-          input(type='hidden' name='PackageId' value=package.PackageId) 
-          input(type='hidden' name='PkgName' value=package.PkgName) 
-          input(type='hidden' name='PkgEndDate' value=package.PkgEndDate)
-          input(type='hidden' name='PkgStartDate' value=package.PkgStartDate)
-          input(type='hidden' name='PkgDesc' value=package.PkgDesc)
-          input(type='hidden' name='PkgBasePrice' value=package.PkgBasePrice)
+                    
+        
+        br
+        form(name='f1' action='/travel_packages/buyingdisplay' method='post')
+        input(type='hidden' name='PackageId' value=package.PackageId) 
+        input(type='hidden' name='PkgName' value=package.PkgName) 
+        input(type='hidden' name='PkgEndDate' value=package.PkgEndDate)
+        input(type='hidden' name='PkgStartDate' value=package.PkgStartDate)
+        input(type='hidden' name='PkgDesc' value=package.PkgDesc)
+        input(type='hidden' name='PkgBasePrice' value=package.PkgBasePrice)
 
-          input(type='hidden' name='prodlist' value=prodlist)
-          br
-          .buyButton
-            input(type='submit' name='submit'  value='ADD TO CART')
+        input(type='hidden' name='prodlist' value=prodlist)
+        br
+        .buyButton
+          input(type='submit' name='submit'  value='ADD TO CART')
       
           //a.btn.btn-primary.col-12(href='/travel_packages/buyingdisplay?PackageId='+package.PackageId) BUY PACKAGE
 
