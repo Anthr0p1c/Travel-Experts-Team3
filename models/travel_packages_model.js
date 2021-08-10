@@ -53,7 +53,8 @@ const travel_packages_schema = new mongoose.Schema({
     },
     PkgDesc: { type: String },
     PkgBasePrice: { type: Number },
-    PkgAgencyCommission: { type: Number }
+    PkgAgencyCommission: { type: Number },
+    Img: { type: String }
 },
     { collection: "packages" })
 

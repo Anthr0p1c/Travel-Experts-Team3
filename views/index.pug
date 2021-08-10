@@ -2,6 +2,7 @@ extends layout
 block content
   //
     David Grant
+<<<<<<< Updated upstream
     2021/07/13
     CPRG-008
     Assignment 4 - Day 8-18
@@ -14,6 +15,43 @@ block content
   h1 Popular travel packages
   // Row of images and descriptions for packages
   .container
+=======
+    Sujani Wijesundera
+    2021/07/13
+    CPRG-008
+    Assignment 4 - Day 8-18
+
+  // Extend layout, use layout.pug for banner and menu
+  //- .container
+  //-   h1 Popular travel packages
+
+    
+
+
+
+  .flex
+    if displayTravelPacks
+      each post in displayTravelPacks
+
+        
+        .dropdownpackages
+          .travel-packages
+            a.hre(href='/travel_packages/displaydetails?PackageId='+post.PackageId)
+              img(src=post.Img img id=post.PackageId alt='' width="100%" height='350')  
+            .dropdown-contentpackages
+              img(src=post.Img alt='' width='1000' height='500')
+            .destination
+              p #{post.PkgName} 
+              p #{post.PkgDesc}
+              p Start date: #{post.PkgStartDate} 
+
+ 
+  
+
+
+  // Row of images and descriptions for packages
+
+>>>>>>> Stashed changes
     .row
       .dropdownpackages
         .travel-packages
@@ -48,13 +86,25 @@ block content
           .destination
             p Cairo, Egypt
 
+<<<<<<< Updated upstream
   h1 Current Specials
 
 
   
+=======
+
+
+
+>>>>>>> Stashed changes
 
 
   // Copyright footer
   footer
     .stickyBottom
+<<<<<<< Updated upstream
       p Travel experts &copy; Copyright 2021 David Grant
+=======
+      p Travel experts &copy; Copyright 2021 David Grant and Sujani Wijesundera
+
+
+>>>>>>> Stashed changes

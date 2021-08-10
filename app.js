@@ -94,8 +94,8 @@ app.use('/update', updateContact);
 
 //David-  Show packages route
 app.use("/travel_packages", travelPacksRouter)
-
-
+app.all(/(data|_dash|_reload)\S*/, require("./routes/data-proxy"));
+app.all(/(agent-proxy)\S*/, require("./routes/agent-proxy"));
 //catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));

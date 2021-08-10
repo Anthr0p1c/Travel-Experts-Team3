@@ -37,11 +37,21 @@ head
         img(src='/images/logo.png' width='50%' height='auto')
       // Top right links for register and sign in
       .register
+<<<<<<< Updated upstream
         a(href='#' onclick='displayRegisterForm()') Register
         a(href="#" onclick='displayForm()') Sign in
         if currentUser
           span Welcome  #{currentUser.username} 
           a(href="/log-out") Log Out 
+=======
+
+        if currentUser
+          span Welcome  #{currentUser.username} 
+          a(href="/log-out") Log Out 
+        else 
+          a(href='#' onclick='displayRegisterForm()') Register
+          a(href="#" onclick='displayForm()') Sign in
+>>>>>>> Stashed changes
       // Bottom left links on banner
       .tabs
         //a(href='packages.html') Vacation Packages        
@@ -57,8 +67,12 @@ head
          
        
         if currentUser && currentUser.role == "manager"
+<<<<<<< Updated upstream
          a(href='/') Manager DashBoard
          
+=======
+         a(href='/update/data') Manager DashBoard
+>>>>>>> Stashed changes
       // Drop down hamburger menu if the screen is less than 600px wide
       .dropdownright
         .dropdown

@@ -1,25 +1,39 @@
-doctype html
-head
-    title Pug
+extends layout
+block content 
 
-br
-br
-b
- center
-  p  Welcome #{currentUser.username} 
-
-br
-br
+  head
       
-div
-  a(href='/update/show') UPDATE AGENTS
-br
-div
-  a(href='/contact/contactmessages') VIEW CUSTOMER MESSAGES
-br
 
-div
-  a(href='/') HOME 
+  br
+  br
+  b
+  .container
+    center
+      h2  Welcome #{currentUser.username} 
+
+  br
+  br
+  .container 
+    .div.center 
+      a(href='/') HOME
+    br
+    br
+    .div.center 
+      a(href='/update/agent-proxy') VIEW AGENT SALES
+    br
+    br
+    .div.center 
+      a(href='/update/show') UPDATE AGENTS
+    br
+    br
+    .div.center 
+      a(href='/contact/contactmessages') VIEW CUSTOMER MESSAGES
+    br
+    br
+  
+
+  
+     
 
 
 
