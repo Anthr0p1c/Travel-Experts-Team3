@@ -11,6 +11,7 @@
     position: relative;
     width: 100%;
     display: inline-block;
+
   }
 
   div.header a {
@@ -554,4 +555,19 @@ p.centerTable {
 /* Add some hover effects to buttons */
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
+}
+
+.col-md-4  {
+  padding: 5%;
+  background: rgba(238, 237, 237, 0.904);
+  margin-right: 8%;
+  width: 40%;
+}
+.img-cont{
+  margin-top: 7%;
+
+}
+
+.buyButton{
+  margin-right: 10%;
 }

@@ -1,5 +1,8 @@
-doctype html
-head
+extends layout
+block content
+  
+  doctype html
+  head
   meta(charset='UTF-8')
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
@@ -8,59 +11,56 @@ head
   script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js')
   // CSS from bootstrap
   //link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
-
   link(rel='stylesheet' href='/stylesheets/style.css')
+  .flex
+    if package
+      .div
+        .col-md-4 
+          ul.list-group
+          li.list-group-item.active  #{package.PkgName}
+          li.list-group-item Package StartDate: #{package.PkgStartDate} 
+          li.list-group-item Package EndDate: #{package.PkgEndDate} 
+          li.list-group-item #{package.PkgDesc}
+          li.list-group-item Package BasePrice: #{package.PkgBasePrice}
 
-if package
-  
-   .col-md-4 
-    ul.list-group
-     li.list-group-item.active  #{package.PkgName}
-     li.list-group-item Package StartDate: #{package.PkgStartDate} 
-     li.list-group-item Package EndDate: #{package.PkgEndDate} 
-     li.list-group-item #{package.PkgDesc}
-     li.list-group-item Package BasePrice: #{package.PkgBasePrice}
-
-    if prodlist
-     
-     div 
-     b
-       Available Available Products With Package  
-     br
-     br
-     div
+          if prodlist
+          
+          div 
+          b
+            Available Available Products With Package  
+          br
+          br
+          div
 
 
-     each product in prodlist    
-      .col-md-4 
-        ul.list-group
-            li.list-group-item.active  #{product.ProdName}
+          each product in prodlist    
+            .col-md-4 
+              ul.list-group
+                  li.list-group-item.active  #{product.ProdName}
+        .img-cont
+          img(src=package.Img alt='' width="50%" height='auto')
 
-                 
-    
-     br
-    form(name='f1' action='/travel_packages/buyingdisplay' method='post')
-     input(type='hidden' name='PackageId' value=package.PackageId) 
-     input(type='hidden' name='PkgName' value=package.PkgName) 
-     input(type='hidden' name='PkgEndDate' value=package.PkgEndDate)
-     input(type='hidden' name='PkgStartDate' value=package.PkgStartDate)
-     input(type='hidden' name='PkgDesc' value=package.PkgDesc)
-     input(type='hidden' name='PkgBasePrice' value=package.PkgBasePrice)
 
-     input(type='hidden' name='prodlist' value=prodlist)
-     
-     input(type='submit' name='submit' value='ADD TO CART')
+                      
+          
+          br
+          form(name='f1' action='/travel_packages/buyingdisplay' method='post')
+          input(type='hidden' name='PackageId' value=package.PackageId) 
+          input(type='hidden' name='PkgName' value=package.PkgName) 
+          input(type='hidden' name='PkgEndDate' value=package.PkgEndDate)
+          input(type='hidden' name='PkgStartDate' value=package.PkgStartDate)
+          input(type='hidden' name='PkgDesc' value=package.PkgDesc)
+          input(type='hidden' name='PkgBasePrice' value=package.PkgBasePrice)
+
+          input(type='hidden' name='prodlist' value=prodlist)
+          br
+          .buyButton
+            input(type='submit' name='submit'  value='ADD TO CART')
+      
+          //a.btn.btn-primary.col-12(href='/travel_packages/buyingdisplay?PackageId='+package.PackageId) BUY PACKAGE
+
+
+      
+
  
-     //a.btn.btn-primary.col-12(href='/travel_packages/buyingdisplay?PackageId='+package.PackageId) BUY PACKAGE
-
-div(style='clear:both')
-
-br
-
-a(href='/travel_packages/') BACK TO PACKAGES
-    
-br
-br        
- 
-a(href='/') HOME
     
