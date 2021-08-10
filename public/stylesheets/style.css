@@ -24,6 +24,30 @@
     margin-left: 5px;
   }
 
+ /* Link style for nav menu */
+ div.tabs a:link, a:visited {
+  background-color: rgba(255, 255, 255, 0.616);
+  color: black;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 4px;
+}
+
+div.tabs a:hover, a:active {
+  background-color:rgba(151, 146, 146, 0.616);
+}
+
+ /* Link style for nav menu */
+ div.register a:link, a:visited {
+  background-color: rgba(255, 255, 255, 0.616);
+  color: black;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 4px;
+}
+
+div.register a:hover, a:active {
+  background-color:rgba(151, 146, 146, 0.616);
+}
+
   /* Link tabs bottom left of banner */
   div.tabs{
     position: absolute;
@@ -34,6 +58,7 @@
     padding-left: 5px;
   }
 
+
   /* Register and sign in links top right banner */
   div.register{
     position: absolute;
@@ -41,7 +66,9 @@
     top: 30px;
     z-index: 5;
     padding-left: 10px;
+    
   }
+
 
   /* Container for travel packages */
   div.travel-packages {
@@ -100,8 +127,8 @@
     top: 0px;
     margin: 5px;
     padding: 0;
- 
   }
+
 
   
 
@@ -364,17 +391,7 @@ div.dropdownright{
       margin-bottom: 30px;
   }
 
-  /* Link style for nav menu */
-  a:link, a:visited {
-      background-color: rgba(255, 255, 255, 0.616);
-      color: black;
-      border: 2px solid rgb(255, 255, 255);
-      border-radius: 4px;
-  }
-  
-  a:hover, a:active {
-      background-color:rgba(151, 146, 146, 0.616);
-  }
+ 
   
   /* Hide hamburger menu if screen width over 600px */
   @media screen and (min-width: 600px) {
@@ -443,7 +460,7 @@ p.centerTable {
   width: 40%;
   height: auto;
   position:fixed;
-  top: 35%;
+  top: 8%;
   right:30%;
   padding: 15px;
   text-align: center;

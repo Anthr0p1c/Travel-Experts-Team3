@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
 
 // Show the use registration form
 router.get('/create', function (req, res, next) {
-  res.render('register');
+  res.render('index');
 });
 
 // // To create a new post - mostafa
@@ -54,15 +54,15 @@ router.post('/create', function (req, res, next) {
   post.save(err => {
 
     // if(err) throw err;
-    if (err) {
-      console.log("Error***");
-      const errorArray = [];
-      const errorKeys = Object.keys(err.errors);
-      errorKeys.forEach(key => errorArray.push(err.errors[key].message));
-      return res.render("register", {
-        errors: errorArray
-      });
-    }
+    // if (err) {
+    //   console.log("Error***");
+    //   const errorArray = [];
+    //   const errorKeys = Object.keys(err.errors);
+    //   errorKeys.forEach(key => errorArray.push(err.errors[key].message));
+    //   return res.render("register", {
+    //     errors: errorArray
+    //   });
+    // }
     res.redirect("/post");
   });
 });

@@ -34,7 +34,8 @@ head
     .header
       img(src='/images/banner.jpg' width='100%' height='300px')
       .left
-        img(src='/images/logo.png' width='50%' height='auto')
+        a(href="/")
+          img(src='/images/logo.png' width='50%' height='auto')
       // Top right links for register and sign in
       .register
 
@@ -47,9 +48,9 @@ head
       // Bottom left links on banner
       .tabs
         //a(href='packages.html') Vacation Packages        
-        a(href='/travel_packages') Vacation Packages
-        a(href='hotels.html') Hotels
-        a(href='offers.html') Special Offers
+        a(href='/') Vacation Packages
+        a(href='/') Hotels
+        a(href='/') Special Offers
         a(href='/contact/createcontact') Contact
         a(href="/about") About Us
         //a(href="/travel_packages") Travel 
@@ -70,10 +71,8 @@ head
           .dropdown-content
             a(href='#' onclick='displayRegisterForm()') Register
             a(href="#" onclick='displayForm()') Sign in
-            a(href='packages.html') Vacation Packages
-            a(href='hotels.html') Hotels
-            a(href='offers.html') Special Offers
-            a(href='contact.html') Contact
+            a(href='/contact/createcontact') Contact
+            a(href="/about") About Us
     // End of banner/nav menu
 
 body
@@ -94,8 +93,9 @@ body
       </div>
 
       <div class="flex">
-        <button type="submit" class="btn">Sign in</button>
         <button type="submit" class="btn cancel" onclick="closeForm()">Close</button>
+        <button type="submit" class="btn">Sign in</button>
+
       </div>
     </form>
   </div>
@@ -106,7 +106,7 @@ body
   // Register form
   <div class="form-popup" id="myRegisterForm">
     // On form submit call verification function
-    <form action='/' class="form-container-register" onSubmit="Validate()" method='POST'>
+    <form action='/post/create' class="form-container-register" onSubmit="Validate()" method='POST'>
       
       .row
         .leftTable
@@ -120,58 +120,20 @@ body
           input#password.form-control(type='password' name='password' placeholder='Password' onfocus="displayText('password')")
       .row
         .leftTable
+          label(for='passwordB') Confirm Password:
+        .centerTable
+          input#password.form-control(type='password' name='passwordB' placeholder='Password' onfocus="displayText('password')")
+      .row
+        .leftTable
           label(for='fname') First Name:
         .centerTable
-          input#fname.form-control(type='text' name='fname' placeholder='First name')
+          input#fname.form-control(type='text' name='firstname' placeholder='First name')
       .row
         .leftTable
           label(for='lname') Last Name:
         .centerTable
-          input#lname.form-control(type='text' name='lname' placeholder='Last name')
-      .row
-        .leftTable
-          label(for='phone') Phone Number:
-        .centerTable
-          input#lname.form-control(type='text' name='phone' placeholder='Phone')
-      .row
-        .leftTable
-          label(for='address') Address:
-        .centerTable
-          input#address.form-control(type='text' name='address' placeholder='Address')
-      .row
-        .leftTable
-          label(for='postal') Postal code:
-        .centerTable
-          input#postal.form-control(type='text' name='postal' placeholder='Postal code')
-      .row
-        .leftTable
-          label(for='city') City:
-        .centerTable
-          input#postal.form-control(type='text' name='city' placeholder='City')
-      .row
-        .leftTable
-          label(for='province') Province:
-        // Dropdown for provinces
-        .centerTable
-          select#province.form-control(name='province')
-            option(value='AB') AB
-            option(value='BC') BC
-            option(value='MB') MB
-            option(value='NB') NB
-            option(value='NL') NL
-            option(value='NT') NT
-            option(value='NS') NS
-            option(value='NU') NU
-            option(value='ON') ON
-      .row
-        .leftTable
-          label(for='country') Country:
-        // Dropdown for countries
-        .centerTable
-          select#country.form-control(name='country')
-            option(value='canada') Canada
-            option(value='australia') Australia
-            option(value='usa') USA
+          input#lname.form-control(type='text' name='lastname' placeholder='Last name')
+      
 
       // Display errors if form fields not correct      
       .row
@@ -204,33 +166,23 @@ body
       
       emailD=document.getElementById("email").value
       passwordD=document.getElementById("password").value
-      fnameD=document.getElementById("fname").value
-      lnameD=document.getElementById("lname").value
-      addressD=document.getElementById("address").value
-      postalD=document.getElementById("postal").value
-      provinceD=document.getElementById("province").value
-      countryD=document.getElementById("country").value
-      phoneD=document.getElementById("phone").value
-      cityD=document.getElementById("city").value
+      passwordDB=document.getElementById("passwordB").value
+      fnameD=document.getElementById("firstname").value
+      lnameD=document.getElementById("lastname").value
+
 
       var formData = {
           email:emailD,
           password:passwordD,
           fname:fnameD,
           lname:lnameD,
-          address:addressD,
-          postal:postalD,
-          province:provinceD,
-          country:countryD,
-          city:cityD,
-          phone:phoneD
+         
       }
       
 
       regexEmail = /^[^\\s@]+@[^\s@]+\.[^\s@]+$/
       regexPassword = /^(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])/
-      regexAddress = /^\s*\S+(?:\s+\S+){2}/
-      regexPostal = /^[ABCEGHJ-NPRSTVXY]\d[ABCEGHJ-NPRSTV-Z][ -]?\d[ABCEGHJ-NPRSTV-Z]\d$/
+
 
       returnString = ""
       for (x in formData) {
@@ -238,19 +190,16 @@ body
               returnString = "All elements must be filled out."
           }
       }
-
+      if (passwordD != passwordDB) {
+        returnString = "Passwords must match."
+      }
       if (regexEmail.test(formData["email"])==false){
         returnString = "Must use a valid email address."
       }
       else if (regexPassword.test(formData["password"])==false){
         returnString = "Must use a valid email address."
       }
-      else if (regexAddress.test(formData["address"])==false){
-        returnString = "Must use a valid email address."
-      }
-      else if (regexPostal.test(formData["postal"])==false){
-        returnString = "Must use a valid email address."
-      }
+      
       
 
       if (returnString != "") {
