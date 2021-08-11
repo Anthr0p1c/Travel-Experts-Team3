@@ -19,8 +19,12 @@ block content
         .col-md-4 
           ul.list-group
           li.list-group-item.active  #{package.PkgName}
-          li.list-group-item Package StartDate: #{package.PkgStartDate} 
-          li.list-group-item Package EndDate: #{package.PkgEndDate} 
+          -var formatBookingDatewithFormatStart= moment(package.PkgStartDate).format("LLLL");
+          -var formatBookingDatewithFormatEnd= moment(package.PkgEndDate).format("LLLL");
+     
+          li.list-group-item Package StartDate: #{formatBookingDatewithFormatStart} 
+          li.list-group-item Package EndDate: #{formatBookingDatewithFormatEnd} 
+
           li.list-group-item #{package.PkgDesc}
           li.list-group-item Package BasePrice: #{package.PkgBasePrice}
 
@@ -62,16 +66,16 @@ block content
         
         br
         form(name='f1' action='/travel_packages/buyingdisplay' method='post')
-        input(type='hidden' name='PackageId' value=package.PackageId) 
-        input(type='hidden' name='PkgName' value=package.PkgName) 
-        input(type='hidden' name='PkgEndDate' value=package.PkgEndDate)
-        input(type='hidden' name='PkgStartDate' value=package.PkgStartDate)
-        input(type='hidden' name='PkgDesc' value=package.PkgDesc)
-        input(type='hidden' name='PkgBasePrice' value=package.PkgBasePrice)
+         input(type='hidden' name='PackageId' value=package.PackageId) 
+         input(type='hidden' name='PkgName' value=package.PkgName) 
+         input(type='hidden' name='PkgEndDate' value=package.PkgEndDate)
+         input(type='hidden' name='PkgStartDate' value=package.PkgStartDate)
+         input(type='hidden' name='PkgDesc' value=package.PkgDesc)
+         input(type='hidden' name='PkgBasePrice' value=package.PkgBasePrice)
 
-        input(type='hidden' name='prodlist' value=prodlist)
-        br
-        .buyButton
+         input(type='hidden' name='prodlist' value=prodlist)
+     
+         .buyButton
           input(type='submit' name='submit'  value='ADD TO CART')
       
           //a.btn.btn-primary.col-12(href='/travel_packages/buyingdisplay?PackageId='+package.PackageId) BUY PACKAGE

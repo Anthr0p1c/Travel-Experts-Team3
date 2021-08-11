@@ -11,20 +11,55 @@ head
   link(rel='stylesheet' href='/stylesheets/style.css')
   
 
-p #{flag}
+  
+center
+if flag
+  p #{flag} 
+  
 
 if MyPackages
   each post in MyPackages
 
-   .col-md-4 
-    ul.list-group
-     li.list-group-item.active  
-     // a.hre(href='/travel_packages/displaydetails?PackageId='+post.PackageId)  
-     li.list-group-item Package StartDate: #{post.BookingDate} 
-     li.list-group-item Number Of Travelers: #{post.TravelerCount}
-     
-     li.list-group-item 
-     // a.btn.btn-primary.col-12(href='/travel_packages/displaydetails?PackageId='+post.PackageId) View Package Details
+    .col-md-4 
+      ul.list-group
+      //li.list-group-item.active  
+      if post.CancelFlag=="0"
+       li.list-group-item.active Active
+      if post.CancelFlag=="1"
+       li.list-group-item.active(style='background-color:red') Canceled
+        
+      li.list-group-item Booking ID: #{post.BookingId}
+      li.list-group-item BookingNo: #{post.BookingNo}
+      li.list-group-item Package: #{post.Description}
+      -var formatBookingDatewithFormat= moment(post.TripStart).format("LLLL");
+      li.list-group-item Package Booking Date: #{formatBookingDatewithFormat} 
+      li.list-group-item Number Of Travelers: #{post.TravelerCount}
 
-  a(href='/') Home    
+      -var formatStartDatewithday= moment(post.TripStart).format("LLLL");
+      li.list-group-item My Package StartDate: #{formatStartDatewithday}
+
+      -var formatEndDatewithday= moment(post.TripEnd).format("LLLL");
+      li.list-group-item My Package EndDate: #{formatEndDatewithday}
+      //to send DB - format
+      -var formatd = moment(post.TripStart).format("YYYY/MM/DD")
+      -var formatdEnd = moment(post.TripEnd).format("YYYY/MM/DD")
       
+      //-var formatd = moment(post.TripStart).format("YYYY/MM/DD")
+      //span='(Created at: ' + moment(post.TripStart).format("LLLL") + ')'
+      //span=formatd
+      
+
+      form(name='f1' action='cancelpackage' method='post')
+        input(type='hidden' name='formatDate' value=formatd)
+        input(type='hidden' name='formatDateEnd' value=formatdEnd)
+        input(type='hidden' name='BookingId' value=post.BookingId)
+        input(type='hidden' name='BookingNo' value=post.BookingNo)
+        input(type='hidden' name='CustomerId' value=currentUser.CustomerId)  
+        input(type='hidden' name='TripStart' value=post.TripStart)
+        input(type='hidden' name='TripEnd' value=post.TripEnd)           
+        input.btn.btn-sm.btn-success.float-right(type='submit' value='CANCEL')   
+      
+div(style='clear:both')
+br
+br
+a(href='/') HOME

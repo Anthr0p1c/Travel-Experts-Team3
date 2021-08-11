@@ -21,7 +21,11 @@ if displayTravelPacks
     ul.list-group
      li.list-group-item.active  
       a.hre(href='/travel_packages/displaydetails?PackageId='+post.PackageId)  #{post.PkgName}
-     li.list-group-item Package StartDate: #{post.PkgStartDate} 
+     -var formatBookingDatewithFormatStart= moment(post.PkgStartDate).format("LLLL");
+      
+
+     li.list-group-item Package StartDate: #{formatBookingDatewithFormatStart}
+      
      
      li.list-group-item 
       a.btn.btn-primary.col-12(href='/travel_packages/displaydetails?PackageId='+post.PackageId) View Package Details

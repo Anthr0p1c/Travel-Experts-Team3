@@ -22,7 +22,8 @@ block content
             .destination
               p #{post.PkgName} 
               p #{post.PkgDesc}
-              p Start date: #{post.PkgStartDate} 
+              -var formatBookingDatewithFormatStart= moment(post.PkgStartDate).format("LLLL");
+              p Start date: #{formatBookingDatewithFormatStart} 
 
 
 

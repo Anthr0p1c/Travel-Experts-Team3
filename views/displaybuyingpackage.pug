@@ -2,7 +2,12 @@
 head
   title Buying package
   
-  if currentUser  
+  if currentUser 
+   
+   if errorFlag 
+     center 
+      span(style='color:red') #{errorFlag} 
+   br
    h2 
     center
      Hi #{currentUser.CustFirstName} , Please get your favorite vacation package here.
@@ -14,7 +19,9 @@ head
           th Departing From
           th Calgary
           th To
-          th  #{PkgDesc} From #{PkgStartDate} to #{PkgEndDate}
+          -var formatBookingDatewithFormatStart= moment(PkgStartDate).format("LLLL");
+          -var formatBookingDatewithFormatEnd= moment(PkgEndDate).format("LLLL");
+          th  #{PkgDesc} From  #{formatBookingDatewithFormatStart} to  #{formatBookingDatewithFormatEnd}
 
         tr 
         tr  
@@ -22,6 +29,7 @@ head
           td Leave(CheckIn)
           td
             input(type='date' name='TripStart' value='checkIndate')
+          
           td Return
           td
             input(type='date' name='TripEnd' value='checkOut')
@@ -118,4 +126,4 @@ head
 
 br
 
-a(href='/travel_packages/') BACK TO PACKAGES
+a(href='/') BACK TO PACKAGES

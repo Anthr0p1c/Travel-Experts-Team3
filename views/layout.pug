@@ -49,6 +49,9 @@ head
       .tabs
         //a(href='packages.html') Vacation Packages        
         a(href='/') Vacation Packages
+        if currentUser && currentUser.role == "customer"
+         a(href='/travel_packages/ViewMyPackages') View/Cancel My Packages
+
         a(href='/') Hotels
         a(href='/') Special Offers
         a(href='/contact/createcontact') Contact

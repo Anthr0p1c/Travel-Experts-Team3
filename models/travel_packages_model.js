@@ -103,6 +103,7 @@ const suppliers_schema = new mongoose.Schema({
 },
     { collection: "suppliers" })
 
+
 //Sujani added - Product schema
 // Suppliers schema
 const product_schema = new mongoose.Schema({
@@ -114,7 +115,7 @@ const product_schema = new mongoose.Schema({
     { collection: "products" })
 
 //Sujani added - Product schema
-// Suppliers schema
+
 const bookings_schema = new mongoose.Schema({
 
     _id: { type: Number },
@@ -125,8 +126,16 @@ const bookings_schema = new mongoose.Schema({
     CustomerId: { type: Number },
     TripTypeId: { type: String },
     PackageId: { type: Number },
+    TripStart: { type: Date },
+    TripEnd: { type: Date },
+    Description: { type: String },
+    CancelFlag: { type: String },
+    link: {
+        type: mongoose.SchemaTypes.ObjectId,
+        ref: "BookingDetailModel"
+    },
 },
-    { collection: "bookings" })
+    { collection: "bookings1" })
 
 const bookings_detail_schema = new mongoose.Schema({
 
@@ -145,10 +154,15 @@ const bookings_detail_schema = new mongoose.Schema({
     ClassId: { type: String },
     FeeId: { type: String },
     ProductSupplierId: { type: Number },
-
+    CustomerId: { type: Number },
+    CancelFlag: { type: String },
+    link: {
+        type: String,
+        required: true
+    },
 
 },
-    { collection: "bookingdetails" })
+    { collection: "bookingdetails1" })
 
 
 
@@ -175,5 +189,3 @@ module.exports.SupplierModel = mongoose.model("SupplierModel", suppliers_schema)
 module.exports.ProductModel = mongoose.model("ProductModel", product_schema)
 module.exports.BookingModel = mongoose.model("BookingModel", bookings_schema)
 module.exports.BookingDetailModel = mongoose.model("BookingDetailModel", bookings_detail_schema)
-
-//console.log("&&&&&");

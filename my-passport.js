@@ -73,9 +73,9 @@ module.exports.init = function (app) {
 
       if (req.body.shopping == "shopping") { // redirect user to the packages page after login       
 
-        //var packageId = req.body.PackageId;
-        //res.redirect('/travel_packages/displaydetails?PackageId=' + packageId);
-        res.redirect('/travel_packages');
+        var packageId = req.body.PackageId;
+        res.redirect('travel_packages/displaydetails?PackageId=' + packageId);
+        // res.redirect('/travel_packages');
       }
       res.redirect('/');
 

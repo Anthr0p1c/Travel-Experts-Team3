@@ -7,6 +7,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
 //Routers
 
 
@@ -24,6 +25,9 @@ var travelPacksRouter = require("./routes/travel_packages")
 
 const mongoSanitize = require("express-mongo-sanitize");
 var app = express();
+// Sujani added to format the date in pug file
+app.locals.moment = require('moment');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
