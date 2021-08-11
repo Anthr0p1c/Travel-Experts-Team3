@@ -52,7 +52,7 @@ div.register a:hover, a:active {
   div.tabs{
     position: absolute;
     display: inline-block;
-    top: 275px;
+    top: 271px;
     left: 0px;
     z-index: 5;
     padding-left: 5px;

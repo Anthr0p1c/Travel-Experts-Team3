@@ -1,6 +1,5 @@
-
-head
-  title Buying package
+extends layout 
+block content
   
   if currentUser 
    
@@ -9,13 +8,15 @@ head
       span(style='color:red') #{errorFlag} 
    br
    h2 
-    center
-     Hi #{currentUser.CustFirstName} , Please get your favorite vacation package here.
+    .container
+      center
+        Hi #{currentUser.CustFirstName} , Please get your favorite vacation package here.
     br
     form(name='f1' action='gocart' method='post')
     
       table#t01
         tr
+          
           th Departing From
           th Calgary
           th To
@@ -100,8 +101,13 @@ head
   else 
     center
      h4
+      br
       Please Please login or register your account before buying the package        
-    
+      //- script.
+        // Login form
+        
+        //- document.getElementById("myForm").style.display = "block";
+      
       .bg-info
         if errors
          ul
@@ -123,7 +129,3 @@ head
 
       a.float-end.bg-info.bg-gradient(href="/post/create") 
           h5 Register
-
-br
-
-a(href='/') BACK TO PACKAGES
