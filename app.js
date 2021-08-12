@@ -52,18 +52,10 @@ app.use(
 var mongoose = require('mongoose');
 
 // Set up a mongoose connection
-//Local host 
-//var mongoDB = 'mongodb://localhost:27017/travelexperts';
+
 var mongoDB = "mongodb+srv://Sujani:Sujani123@cluster0.4annu.mongodb.net/travelexperts?retryWrites=true&w=majority";
 
-//my connection cluster db
-//var mongoDB = "mongodb+srv://Ilup75:Ilup75@cluster0.zigid.mongodb.net/blog?retryWrites=true&w=majority";
 
-//Travelexperts
-//var mongoDB = "mongodb+srv://Ilup75:Ilup75@cluster0.zigid.mongodb.net/travelexperts?retryWrites=true&w=majority";
-
-//old way to get connection
-//mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 
 //new way from .env
 mongoose.connect(process.env.MONGO_URL || mongoDB, {

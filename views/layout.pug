@@ -1,8 +1,6 @@
 //
   David Grant
-  2021/07/13
-  CPRG-008
-  Assignment 4 - Day 8-18
+
 
 
 // Layout for all pages. Banner and menu at top of pages.
@@ -13,20 +11,9 @@ head
   meta(http-equiv='X-UA-Compatible' content='IE=edge')
   meta(name='viewport' content='width=device-width, initial-scale=1.0')
   link(rel='stylesheet' href='/stylesheets/style.css')
-  //- script(type='text/javascript' src='/javascripts/regex.js')
+  script(type='text/javascript' src='/javascripts/regex.js')
+  script(type='text/javascript' src='/javascripts/login.js')
   title Travel Experts
-
-
-
-
-
-
-    
-
-
-
-
-
 
 
   .sticky
@@ -147,71 +134,6 @@ body
       </form>
     </div>
 
-      // Form display
-  script.
-    // Login form
-    function displayForm() {
-      document.getElementById("myForm").style.display = "block";
-    }
-    function closeForm() {
-      document.getElementById("myForm").style.display = "none";
-    }
-    // Register form
-    function displayRegisterForm() {
-      document.getElementById("myRegisterForm").style.display = "block";
-    }
-    function closeRegisterForm() {
-      document.getElementById("myRegisterForm").style.display = "none";
-    }
-    document.getElementById("userName").innerHTML(currentUser)
 
-    function Validate() {
-      
-      emailD=document.getElementById("email").value
-      passwordD=document.getElementById("password").value
-      passwordDB=document.getElementById("passwordB").value
-      fnameD=document.getElementById("firstname").value
-      lnameD=document.getElementById("lastname").value
-
-
-      var formData = {
-          email:emailD,
-          password:passwordD,
-          fname:fnameD,
-          lname:lnameD,
-         
-      }
-      
-
-      regexEmail = /^[^\\s@]+@[^\s@]+\.[^\s@]+$/
-      regexPassword = /^(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])/
-
-
-      returnString = ""
-      for (x in formData) {
-          if (formData[x].length < 1) {
-              returnString = "All elements must be filled out."
-          }
-      }
-      if (passwordD != passwordDB) {
-        returnString = "Passwords must match."
-      }
-      if (regexEmail.test(formData["email"])==false){
-        returnString = "Must use a valid email address."
-      }
-      else if (regexPassword.test(formData["password"])==false){
-        returnString = "Must use a valid email address."
-      }
-      
-      
-
-      if (returnString != "") {
-        document.getElementById("errors").innerHTML = returnString
-      }
-      else {
-        document.getElementById("errors").innerHTML = "Thank you for registering!"
-      }
-      
-    }
     
 block content 

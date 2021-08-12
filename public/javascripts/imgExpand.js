@@ -1,3 +1,5 @@
+//David Grant
+
 function imgExpand(imgs) {
     // Get the expanded image
     var expandImg = document.getElementById("mainImg");
